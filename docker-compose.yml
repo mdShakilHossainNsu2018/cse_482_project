@@ -10,6 +10,8 @@ services:
     restart: unless-stopped
     volumes:
       - ./:/var/www
+    environment:
+      ROOT: "/var/www/"
     depends_on:
       - db
 
