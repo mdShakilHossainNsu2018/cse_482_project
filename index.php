@@ -1,15 +1,11 @@
 <?php
 require(getenv("ROOT")."global_constants.php");
-require ("database/create_connection.php");
-
+require("database/UserHelper.php");
 include "views/components/header/header.php";
 
 // home page
 
-$db = Database::getConnection();
-$stmt = $db->prepare("SELECT * FROM users");
-$stmt->execute();
-$users = $stmt->fetchAll();
+$users = UserHelper::getAllUsers();
 
 if ($users) {
     foreach ($users as $user) {
