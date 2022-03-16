@@ -1,0 +1,1 @@
+create table users (user_id int, email varchar(30), password varchar(30));

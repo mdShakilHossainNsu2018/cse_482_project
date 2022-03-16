@@ -1,0 +1,1 @@
+insert into users (user_id, email, password) VALUES (1, 'shakil@gmail.com', 'password');
