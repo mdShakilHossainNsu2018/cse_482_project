@@ -16,4 +16,6 @@ RUN addgroup -g 1000 -S www && \
 USER www
 COPY --chown=www:www . /var/www
 
+RUN composer install
+
 EXPOSE 9000
