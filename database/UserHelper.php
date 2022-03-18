@@ -4,15 +4,10 @@ require("create_connection.php");
 
 class UserHelper
 {
-    private static $db;
-
-    public function __construct()
-    {
-        self::$db = Database::getConnection();
-    }
 
     public static function getAllUsers(){
-        $stmt = self::$db->prepare("SELECT * FROM users");
+        $db_conn = Database::getConnection();
+        $stmt = $db_conn->prepare("SELECT * FROM users");
         $stmt->execute();
         return $stmt->fetchAll();
     }
@@ -23,5 +18,15 @@ class UserHelper
         $sql = "INSERT INTO users ( username, email, password) VALUES (?, ?, ?);";
         $stmt = $db_conn->prepare($sql);
         return $stmt->execute(array($username, $email, $password));
+    }
+
+    public static function login($email, $password){
+
+
+    }
+
+    public static function isAuthenticated(): bool{
+
+        return false;
     }
 }
