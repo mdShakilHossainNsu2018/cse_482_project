@@ -7,9 +7,6 @@ class Database {
 
 
     private function __construct() {
-//        $this->connection = new MySQLi(/* credentials */);
-
-
         try {
             $this->db_connection = new PDO("mysql:host=db;dbname=db;charset=UTF8", "user", "password");
             $this->db_connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

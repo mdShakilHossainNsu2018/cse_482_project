@@ -14,7 +14,7 @@ echo SITE_URL ?>views/components/header/style.css'>
         <ul>
             <li><a class="active" href="#">Home</a></li>
             <li><a href="#">Buy Property</a></li>
-            <li><a href="views/auth/auth.php">Login</a></li>
+            <li><a href="<?php echo SITE_URL ?>views/auth/auth.php">Login</a></li>
             <li><a href="#">Sing up</a></li>
         </ul>
     </nav>
