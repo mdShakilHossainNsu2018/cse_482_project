@@ -1,5 +1,5 @@
 <?php
-require(getenv("ROOT")."global_constants.php");
+require_once("global_constants.php");
 require("database/UserHelper.php");
 include "views/components/header/header.php";
 
@@ -12,6 +12,8 @@ if ($users) {
         echo $user['email'] . "<br/>";
     }
 }
+
+
 
 echo "<h1> Hello world changed </h1>";
 
