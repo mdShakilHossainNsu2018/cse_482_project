@@ -1,0 +1,1 @@
+{"version":1,"defects":{"ExampleTest::testDummy":3,"DBConnectionTest::testDummy":5,"DBConnectionTest::testDBConnection":4},"times":{"ExampleTest::testDummy":0.001,"DBConnectionTest::testDummy":0.008,"DBConnectionTest::testDBConnection":0.013}}
