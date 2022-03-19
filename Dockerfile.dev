@@ -16,6 +16,6 @@ RUN addgroup -g 1000 -S www && \
 USER www
 COPY --chown=www:www . /var/www
 
-RUN composer install
+RUN composer install --ignore-platform-reqs --no-scripts
 
 EXPOSE 9000
