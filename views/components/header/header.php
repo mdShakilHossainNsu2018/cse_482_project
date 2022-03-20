@@ -1,3 +1,7 @@
+<?php
+require_once getenv("ROOT")."database/UserHelper.php";
+?>
+
 <link rel="stylesheet" href='<?php
 echo SITE_URL ?>views/components/header/style.css'>
 
@@ -14,8 +18,16 @@ echo SITE_URL ?>views/components/header/style.css'>
         <ul>
             <li><a class="active" href="#">Home</a></li>
             <li><a href="#">Buy Property</a></li>
-            <li><a href="<?php echo SITE_URL ?>views/auth/auth.php">Login</a></li>
-            <li><a href="#">Sing up</a></li>
+            <?php
+
+            if (Session::isAuthenticated()){
+
+                echo '<li><a href="'. SITE_URL .'views/auth/logout.php">Logout</a></li>';
+            } else{
+                echo '<li><a href="'.SITE_URL.'views/auth/auth.php">Login</a></li>';
+            }
+
+            ?>
         </ul>
     </nav>
 </div>

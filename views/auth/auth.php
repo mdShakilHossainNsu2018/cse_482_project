@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once("../../global_constants.php");
 ?>
 
@@ -35,7 +36,7 @@ include "../components/header/header.php"
             </form>
         </div>
         <div class="form-container sign-in-container">
-            <form action="#">
+            <form action="LoginAction.php" method="post">
                 <h1>Sign in</h1>
                 <!--            <div class="social-container">-->
                 <!--                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>-->
@@ -43,8 +44,8 @@ include "../components/header/header.php"
                 <!--                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>-->
                 <!--            </div>-->
                 <!--            <span>or use your account</span>-->
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
+                <input type="email" placeholder="Email" name="email" />
+                <input type="password" placeholder="Password" name="password" />
                 <a href="#">Forgot your password?</a>
                 <button>Sign In</button>
             </form>

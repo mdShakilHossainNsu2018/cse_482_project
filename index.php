@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once("global_constants.php");
 require("database/UserHelper.php");
 include "views/components/header/header.php";
@@ -7,12 +8,12 @@ include "views/components/header/header.php";
 
 $users = UserHelper::getAllUsers();
 
+
 if ($users) {
     foreach ($users as $user) {
         echo $user['email'] . "<br/>";
     }
 }
-
 
 
 echo "<h1> Hello world changed </h1>";
