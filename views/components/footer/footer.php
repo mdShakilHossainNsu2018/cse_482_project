@@ -23,7 +23,7 @@ echo SITE_URL ?>views/components/footer/style.css'>
         <div class="sec quicklinks">
             <h2>Quick Links</h2>
             <ul>
-                <li><a href="#">Avout</a></li>
+                <li><a href="#">About</a></li>
                 <li><a href="#">Faq</a></li>
                 <li><a href="#">Privacy Policy</a></li>
                 <li><a href="#">Help</a></li>
