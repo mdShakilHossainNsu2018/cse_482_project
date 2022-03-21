@@ -23,6 +23,7 @@ echo SITE_URL ?>views/components/header/style.css'>
             if (Session::isAuthenticated()){
 
                 echo '<li><a href="'. SITE_URL .'views/auth/logout.php">Logout</a></li>';
+                echo '<li style="color: #DDDDDD;">'.Session::getLoggedInUsername().'</li>';
             } else{
                 echo '<li><a href="'.SITE_URL.'views/auth/auth.php">Login</a></li>';
             }

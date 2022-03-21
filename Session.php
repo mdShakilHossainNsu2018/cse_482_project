@@ -9,8 +9,16 @@ class Session
     public static function getSession($key){
         return $_SESSION[$key];
     }
+
     public static function isAuthenticated(): bool {
         return (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true);
+    }
+
+    public static function getLoggedInUsername(){
+        if(self::isAuthenticated()){
+            return $_SESSION["username"];
+        }
+        return null;
     }
 
 }

@@ -22,6 +22,7 @@ docker-compose up --build
 docker-compose up
 
 # database init table
+docker-compose exec app sh
 php -f database/init.php
 
 ```

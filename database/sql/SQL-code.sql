@@ -17,7 +17,7 @@ USE `db` ;
 -- -----------------------------------------------------
 -- Table `mydb`.`UserProfile`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `db`.`UserProfile`(
+CREATE TABLE IF NOT EXISTS `db`.`user_profile`(
   `profileID` INT NOT NULL,
   `number` VARCHAR(45) NOT NULL,
   `address` VARCHAR(45) NOT NULL,
@@ -29,7 +29,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `mydb`.`User`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `db`.`User`(
+CREATE TABLE IF NOT EXISTS `db`.`user`(
   `idUser` INT NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
@@ -62,7 +62,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `mydb`.`property info`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `db`.`property info`(
+CREATE TABLE IF NOT EXISTS `db`.`property_info`(
   `idProperty` INT NOT NULL,
   `Location` VARCHAR(45) NOT NULL,
   `img` VARCHAR(45) NOT NULL,
