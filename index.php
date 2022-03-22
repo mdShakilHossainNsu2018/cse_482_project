@@ -18,5 +18,8 @@ if ($users) {
 
 echo "<h1> Hello world changed </h1>";
 
+//include_once "views/components/map/google_map_api.php";
+
+
 include "views/components/footer/footer.php";
 ?>
