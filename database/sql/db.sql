@@ -30,15 +30,15 @@ ENGINE = InnoDB;
 -- Table `db`.`users`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `db`.`users` (
-  `idUser` INT NOT NULL,
+  `id` INT NOT NULL,
   `email` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
-  `table1_name` INT NOT NULL,
+  `password` VARCHAR(256) NOT NULL,
   `CreatedAt` DATETIME NOT NULL,
-  PRIMARY KEY (`idUser`, `table1_name`),
-  INDEX `fk_User_table1_idx` (`table1_name` ASC) VISIBLE,
-  CONSTRAINT `fk_User_table1`
-    FOREIGN KEY (`table1_name`)
+  `user_profile_profileID` INT NOT NULL,
+  PRIMARY KEY (`id`, `user_profile_profileID`),
+  INDEX `fk_users_user_profile1_idx` (`user_profile_profileID` ASC) VISIBLE,
+  CONSTRAINT `fk_users_user_profile1`
+    FOREIGN KEY (`user_profile_profileID`)
     REFERENCES `db`.`user_profile` (`profileID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -89,8 +89,8 @@ CREATE TABLE IF NOT EXISTS `db`.`property_info` (
   INDEX `fk_property info_Details1_idx` (`Details_idDetails` ASC) VISIBLE,
   INDEX `fk_property_info_coords1_idx` (`coords_idcoords` ASC) VISIBLE,
   CONSTRAINT `fk_property info_User1`
-    FOREIGN KEY (`User_idUser` , `User_table1_name`)
-    REFERENCES `db`.`users` (`idUser` , `table1_name`)
+    FOREIGN KEY (`User_idUser`)
+    REFERENCES `db`.`users` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_property info_Details1`
