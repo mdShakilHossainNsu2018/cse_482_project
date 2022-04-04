@@ -18,7 +18,7 @@ USE `db` ;
 -- Table `db`.`user_profile`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `db`.`user_profile` (
-  `idprofile` INT NOT NULL,
+  `idprofile` INT NOT NULL AUTO_INCREMENT,
   `number` VARCHAR(45) NOT NULL,
   `address` VARCHAR(45) NOT NULL,
   `name` VARCHAR(45) NOT NULL,
@@ -30,7 +30,7 @@ ENGINE = InnoDB;
 -- Table `db`.`users`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `db`.`users` (
-  `iduser` INT NOT NULL,
+  `iduser` INT NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(45) NOT NULL,
   `password` VARCHAR(256) NOT NULL,
   `CreatedAt` DATETIME NOT NULL,
@@ -51,7 +51,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `db`.`coords` (
   `idcoords` INT NOT NULL,
   `lat` DOUBLE NOT NULL,
-  `lang` DOUBLE NOT NULL,
+  `long` DOUBLE NOT NULL,
   PRIMARY KEY (`idcoords`))
 ENGINE = InnoDB;
 
@@ -60,7 +60,7 @@ ENGINE = InnoDB;
 -- Table `db`.`details`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `db`.`details` (
-  `idDetails` INT NOT NULL,
+  `idDetails` INT NOT NULL AUTO_INCREMENT,
   `Type` VARCHAR(45) NOT NULL,
   `Area` INT NOT NULL,
   `Bed` INT NOT NULL,
@@ -82,12 +82,13 @@ ENGINE = InnoDB;
 -- Table `db`.`property_info`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `db`.`property_info` (
-  `idProperty` INT NOT NULL,
-  `Location` VARCHAR(45) NOT NULL,
-  `price` INT ZEROFILL NOT NULL,
+  `idProperty` INT NOT NULL AUTO_INCREMENT,
+  `address` VARCHAR(45) NOT NULL,
+  `price` INT NOT NULL,
   `users_iduser` INT NOT NULL,
   `users_user_profile_idprofile` INT NOT NULL,
   `details_idDetails` INT NOT NULL,
+  `title` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idProperty`, `users_iduser`, `users_user_profile_idprofile`, `details_idDetails`),
   INDEX `fk_property_info_users1_idx` (`users_iduser` ASC, `users_user_profile_idprofile` ASC) VISIBLE,
   INDEX `fk_property_info_details1_idx` (`details_idDetails` ASC) VISIBLE,
@@ -108,7 +109,7 @@ ENGINE = InnoDB;
 -- Table `db`.`image`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `db`.`image` (
-  `idimage` INT NOT NULL,
+  `idimage` INT NOT NULL AUTO_INCREMENT,
   `url` VARCHAR(255) NOT NULL,
   `alt` VARCHAR(255) NOT NULL,
   `property_info_idProperty` INT NOT NULL,

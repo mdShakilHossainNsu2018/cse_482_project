@@ -21,9 +21,9 @@ require_once getenv("ROOT")."database/UserHelper.php";
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="#">Add Property</a>
                 </li>
-                <li class="nav-item dropdown">
+                <!-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Dropdown
                     </a>
@@ -33,10 +33,25 @@ require_once getenv("ROOT")."database/UserHelper.php";
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
-                </li>
-                <li class="nav-item">
+                </li> -->
+                <!-- <li class="nav-item">
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                </li>
+                </li> -->
+
+                          <?php
+
+            if (Session::isAuthenticated()){
+
+                echo '<li class="nav-item"><a class="nav-link" href="'. SITE_URL .'views/auth/logout.php">Logout</a></li>';
+                //  echo '<li style="color: #DDDDDD;">'.Session::getLoggedInUsername().'</li>';
+
+                echo '<li class="nav-item"><a class="nav-link" href="#">Profile</a></li>';
+            } else{
+                echo '<li class="nav-item"><a class="nav-link" href="'.SITE_URL.'views/auth/auth.php">Login</a></li>';
+            }
+
+            ?>
+
             </ul>
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
