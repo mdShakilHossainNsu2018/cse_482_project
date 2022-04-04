@@ -46,6 +46,17 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `db`.`coords`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `db`.`coords` (
+  `idcoords` INT NOT NULL,
+  `lat` DOUBLE NOT NULL,
+  `lang` DOUBLE NOT NULL,
+  PRIMARY KEY (`idcoords`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `db`.`details`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `db`.`details` (
@@ -56,9 +67,14 @@ CREATE TABLE IF NOT EXISTS `db`.`details` (
   `Content` VARCHAR(45) NOT NULL,
   `CreatedAt` TIMESTAMP NOT NULL,
   `bath` INT NOT NULL,
-  `lat` DOUBLE NOT NULL,
-  `lang` DOUBLE NOT NULL,
-  PRIMARY KEY (`idDetails`))
+  `coords_idcoords` INT NOT NULL,
+  PRIMARY KEY (`idDetails`, `coords_idcoords`),
+  INDEX `fk_details_coords1_idx` (`coords_idcoords` ASC) VISIBLE,
+  CONSTRAINT `fk_details_coords1`
+    FOREIGN KEY (`coords_idcoords`)
+    REFERENCES `db`.`coords` (`idcoords`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -105,17 +121,6 @@ CREATE TABLE IF NOT EXISTS `db`.`image` (
     REFERENCES `db`.`property_info` (`idProperty` , `users_iduser` , `users_user_profile_idprofile`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `db`.`coords`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `db`.`coords` (
-  `idcoords` INT NOT NULL,
-  `lat` DOUBLE NOT NULL,
-  `lang` DOUBLE NOT NULL,
-  PRIMARY KEY (`idcoords`))
 ENGINE = InnoDB;
 
 
