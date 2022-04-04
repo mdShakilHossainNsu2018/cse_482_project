@@ -21,4 +21,11 @@ class Session
         return null;
     }
 
+    public static function getLoggedInUserId(){
+        if(self::isAuthenticated()){
+            return $_SESSION["user_id"];
+        }
+        return null;
+    }
+
 }

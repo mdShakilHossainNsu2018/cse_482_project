@@ -5,124 +5,132 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
 -- Schema db
 -- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `db` ;
 
 -- -----------------------------------------------------
 -- Schema db
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `db` DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA IF NOT EXISTS `db` ;
 USE `db` ;
-
--- -----------------------------------------------------
--- Table `db`.`user_profile`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `db`.`user_profile` (
-                                                   `idprofile` INT NOT NULL AUTO_INCREMENT,
-                                                   `number` VARCHAR(45) NOT NULL,
-                                                   `address` VARCHAR(45) NOT NULL,
-                                                   `name` VARCHAR(45) NOT NULL,
-                                                   PRIMARY KEY (`idprofile`))
-    ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `db`.`users`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `db`.`users` ;
+
 CREATE TABLE IF NOT EXISTS `db`.`users` (
-                                            `iduser` INT NOT NULL AUTO_INCREMENT,
-                                            `email` VARCHAR(45) NOT NULL,
-                                            `password` VARCHAR(256) NOT NULL,
-                                            `CreatedAt` DATETIME NOT NULL,
-                                            `user_profile_idprofile` INT NOT NULL,
-                                            PRIMARY KEY (`iduser`, `user_profile_idprofile`),
-                                            INDEX `fk_users_user_profile_idx` (`user_profile_idprofile` ASC) VISIBLE,
-                                            CONSTRAINT `fk_users_user_profile`
-                                                FOREIGN KEY (`user_profile_idprofile`)
-                                                    REFERENCES `db`.`user_profile` (`idprofile`)
-                                                    ON DELETE NO ACTION
-                                                    ON UPDATE NO ACTION)
-    ENGINE = InnoDB;
+  `user_id` INT NOT NULL AUTO_INCREMENT,
+  `email` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(256) NOT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`user_id`),
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `db`.`properties`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `db`.`properties` ;
+
+CREATE TABLE IF NOT EXISTS `db`.`properties` (
+  `property_id` INT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(45) NOT NULL,
+  `address` VARCHAR(256) NOT NULL,
+  `price` INT(100) UNSIGNED ZEROFILL NOT NULL,
+  `area` INT(100) NOT NULL,
+  `beds` INT(100) NOT NULL,
+  `baths` INT(100) NOT NULL,
+  `details` VARCHAR(256) NOT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `users_user_id` INT NOT NULL,
+  PRIMARY KEY (`property_id`),
+  INDEX `fk_properties_users1_idx` (`users_user_id` ASC) VISIBLE,
+  CONSTRAINT `fk_properties_users1`
+    FOREIGN KEY (`users_user_id`)
+    REFERENCES `db`.`users` (`user_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
 -- Table `db`.`coords`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `db`.`coords` ;
+
 CREATE TABLE IF NOT EXISTS `db`.`coords` (
-                                             `idcoords` INT NOT NULL,
-                                             `lat` DOUBLE NOT NULL,
-                                             `long` DOUBLE NOT NULL,
-                                             PRIMARY KEY (`idcoords`))
-    ENGINE = InnoDB;
+  `coords_id` INT NOT NULL AUTO_INCREMENT,
+  `lat` DOUBLE NOT NULL,
+  `long` DOUBLE NOT NULL,
+  `properties_property_id` INT NOT NULL,
+  PRIMARY KEY (`coords_id`),
+  INDEX `fk_coords_properties1_idx` (`properties_property_id` ASC) VISIBLE,
+  CONSTRAINT `fk_coords_properties1`
+    FOREIGN KEY (`properties_property_id`)
+    REFERENCES `db`.`properties` (`property_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `db`.`details`
+-- Table `db`.`images`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `db`.`details` (
-                                              `idDetails` INT NOT NULL AUTO_INCREMENT,
-                                              `Type` VARCHAR(45) NOT NULL,
-                                              `Area` INT NOT NULL,
-                                              `Bed` INT NOT NULL,
-                                              `Content` VARCHAR(45) NOT NULL,
-                                              `CreatedAt` TIMESTAMP NOT NULL,
-                                              `bath` INT NOT NULL,
-                                              `coords_idcoords` INT NOT NULL,
-                                              PRIMARY KEY (`idDetails`, `coords_idcoords`),
-                                              INDEX `fk_details_coords1_idx` (`coords_idcoords` ASC) VISIBLE,
-                                              CONSTRAINT `fk_details_coords1`
-                                                  FOREIGN KEY (`coords_idcoords`)
-                                                      REFERENCES `db`.`coords` (`idcoords`)
-                                                      ON DELETE NO ACTION
-                                                      ON UPDATE NO ACTION)
-    ENGINE = InnoDB;
+DROP TABLE IF EXISTS `db`.`images` ;
+
+CREATE TABLE IF NOT EXISTS `db`.`images` (
+  `image_id` INT NOT NULL AUTO_INCREMENT,
+  `url` VARCHAR(255) NOT NULL,
+  `alt` VARCHAR(255) NULL,
+  `properties_property_id` INT NOT NULL,
+  PRIMARY KEY (`image_id`),
+  INDEX `fk_images_properties1_idx` (`properties_property_id` ASC) VISIBLE,
+  CONSTRAINT `fk_images_properties1`
+    FOREIGN KEY (`properties_property_id`)
+    REFERENCES `db`.`properties` (`property_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `db`.`property_info`
+-- Table `db`.`user_profile`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `db`.`property_info` (
-                                                    `idProperty` INT NOT NULL AUTO_INCREMENT,
-                                                    `address` VARCHAR(45) NOT NULL,
-                                                    `price` INT NOT NULL,
-                                                    `users_iduser` INT NOT NULL,
-                                                    `users_user_profile_idprofile` INT NOT NULL,
-                                                    `details_idDetails` INT NOT NULL,
-                                                    `title` VARCHAR(45) NOT NULL,
-                                                    PRIMARY KEY (`idProperty`, `users_iduser`, `users_user_profile_idprofile`, `details_idDetails`),
-                                                    INDEX `fk_property_info_users1_idx` (`users_iduser` ASC, `users_user_profile_idprofile` ASC) VISIBLE,
-                                                    INDEX `fk_property_info_details1_idx` (`details_idDetails` ASC) VISIBLE,
-                                                    CONSTRAINT `fk_property_info_users1`
-                                                        FOREIGN KEY (`users_iduser` , `users_user_profile_idprofile`)
-                                                            REFERENCES `db`.`users` (`iduser` , `user_profile_idprofile`)
-                                                            ON DELETE NO ACTION
-                                                            ON UPDATE NO ACTION,
-                                                    CONSTRAINT `fk_property_info_details1`
-                                                        FOREIGN KEY (`details_idDetails`)
-                                                            REFERENCES `db`.`details` (`idDetails`)
-                                                            ON DELETE NO ACTION
-                                                            ON UPDATE NO ACTION)
-    ENGINE = InnoDB;
+DROP TABLE IF EXISTS `db`.`user_profile` ;
 
-
--- -----------------------------------------------------
--- Table `db`.`image`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `db`.`image` (
-                                            `idimage` INT NOT NULL AUTO_INCREMENT,
-                                            `url` VARCHAR(255) NOT NULL,
-                                            `alt` VARCHAR(255) NOT NULL,
-                                            `property_info_idProperty` INT NOT NULL,
-                                            `property_info_users_iduser` INT NOT NULL,
-                                            `property_info_users_user_profile_idprofile` INT NOT NULL,
-                                            PRIMARY KEY (`idimage`, `property_info_idProperty`, `property_info_users_iduser`, `property_info_users_user_profile_idprofile`),
-                                            INDEX `fk_image_property_info1_idx` (`property_info_idProperty` ASC, `property_info_users_iduser` ASC, `property_info_users_user_profile_idprofile` ASC) VISIBLE,
-                                            CONSTRAINT `fk_image_property_info1`
-                                                FOREIGN KEY (`property_info_idProperty` , `property_info_users_iduser` , `property_info_users_user_profile_idprofile`)
-                                                    REFERENCES `db`.`property_info` (`idProperty` , `users_iduser` , `users_user_profile_idprofile`)
-                                                    ON DELETE NO ACTION
-                                                    ON UPDATE NO ACTION)
-    ENGINE = InnoDB;
+CREATE TABLE IF NOT EXISTS `db`.`user_profile` (
+  `profile_id` INT NOT NULL AUTO_INCREMENT,
+  `phone` VARCHAR(45) NULL,
+  `address` VARCHAR(256) NULL,
+  `name` VARCHAR(45) NULL,
+  `image` VARCHAR(256) NULL,
+  `users_user_id` INT NOT NULL,
+  PRIMARY KEY (`profile_id`),
+  UNIQUE INDEX `idprofile_UNIQUE` (`profile_id` ASC) VISIBLE,
+  UNIQUE INDEX `phone_UNIQUE` (`phone` ASC) VISIBLE,
+  INDEX `fk_user_profile_users1_idx` (`users_user_id` ASC) VISIBLE,
+  CONSTRAINT `fk_user_profile_users1`
+    FOREIGN KEY (`users_user_id`)
+    REFERENCES `db`.`users` (`user_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
