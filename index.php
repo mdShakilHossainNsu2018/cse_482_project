@@ -16,7 +16,7 @@ if ($users) {
 }
 
 
-include "views/components/body/homepage.php";
+//include "views/components/body/homepage.php";
 
 include_once "views/components/map/google_map_api.php";
 

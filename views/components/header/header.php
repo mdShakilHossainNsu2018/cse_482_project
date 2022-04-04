@@ -8,9 +8,10 @@ require_once getenv("ROOT")."database/UserHelper.php";
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous">
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+
+        <a href="/" class="navbar-brand">Property Buy & Sell</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
