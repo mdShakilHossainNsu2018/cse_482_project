@@ -28,8 +28,10 @@ php -f database/init.php
 ```
 
 # run sql code for windows 
+```shell
 docker-compose exec db sh
 mysql -u user -p
 password:password
 use db
 select * from users;
+```
