@@ -31,7 +31,7 @@ class UserHelper
         $sql_profile_create = "insert into user_profile (idprofile, number, address, name) VALUES (?, ?, ?, ?);";
         $stmt_profile_create = $db_conn->prepare($sql_profile_create);
 
-        if ($stmt_profile_create->execute(array(self::getLastId("idprofile", "user_profile") + 1, '', '', ''))){
+        if ($stmt_profile_create->execute(array(self::getLastId("idprofile", "user_profile") + 1, '', '', $username))){
             $id = self::getLastId("idprofile", "user_profile");
 //            $sql = "INSERT INTO users ( iduser, email, password, CreatedAt, user_profile_idprofile) VALUES (:iduser, :email, :password, NOW(), :user_profile_idprofile);";
             $sql = "INSERT INTO users ( iduser, email, password, user_profile_idprofile, CreatedAt) VALUES (?, ?, ?, ?, NOW());";
@@ -46,7 +46,7 @@ class UserHelper
 
     public static function login($email, $password){
         $db_conn = Database::getConnection();
-        $sql = "SELECT iduser, email, password, CreatedAt, user_profile_idprofile FROM users WHERE email = :email" ;
+        $sql = "SELECT iduser, email, password, CreatedAt, user_profile_idprofile, name FROM users JOIN user_profile ON users.user_profile_idprofile = user_profile.idprofile WHERE email = :email" ;
 
         if($stmt = $db_conn->prepare($sql)){
             // Bind variables to the prepared statement as parameters
@@ -63,7 +63,7 @@ class UserHelper
                         $id = $row["user_id"];
 //                        echo $row["email"];
                         $email = $row["email"];
-                        $username = $row["username"];
+                        $username = $row["name"];
                         $hashed_password = $row["password"];
                         if(password_verify($password, $hashed_password)){
                             // Password is correct, so start a new session

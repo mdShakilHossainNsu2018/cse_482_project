@@ -9,14 +9,15 @@ include "views/components/header/header.php";
 $users = UserHelper::getAllUsers();
 
 
-if ($users) {
-    foreach ($users as $user) {
-        echo $user['email'] . "<br/>";
-    }
-}
+//if ($users) {
+//    foreach ($users as $user) {
+//        echo $user['email'] . "<br/>";
+//    }
+//}
+//echo Session::getLoggedInUsername();
 
 
-//include "views/components/body/homepage.php";
+include "views/components/body/homepage.php";
 
 include_once "views/components/map/google_map_api.php";
 
