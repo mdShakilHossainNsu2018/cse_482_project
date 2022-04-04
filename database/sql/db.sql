@@ -29,7 +29,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `db`.`user`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `db`.`user` (
+CREATE TABLE IF NOT EXISTS `db`.users (
   `idUser` INT NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `db`.`property_info` (
   INDEX `fk_property_info_coords1_idx` (`coords_idcoords` ASC) VISIBLE,
   CONSTRAINT `fk_property info_User1`
     FOREIGN KEY (`User_idUser` , `User_table1_name`)
-    REFERENCES `db`.`user` (`idUser` , `table1_name`)
+    REFERENCES `db`.users (`idUser` , `table1_name`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_property info_Details1`

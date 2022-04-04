@@ -5,8 +5,6 @@ require_once getenv("ROOT")."database/UserHelper.php";
 <link rel="stylesheet" href='<?php
 echo SITE_URL ?>views/components/header/style.css'>
 
-<script src="https://kit.fontawesome.com/a076d05399.js"></script>
-
 <div class="main-nav">
     <nav>
         <a href="/"><div class="logo">Property Buy & Sell</div></a>
