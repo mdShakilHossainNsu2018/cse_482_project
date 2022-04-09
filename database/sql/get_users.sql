@@ -1,1 +1,1 @@
-select * from users;
+select MAX(user_id) as user_id from users;

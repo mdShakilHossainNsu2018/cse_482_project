@@ -1,1 +1,1 @@
-{"version":1,"defects":[],"times":{"ExampleTest::testDummy":0.005,"PropertyTest::testCreateProperty":0.099,"UserTest::testUserCreate":0.166}}
+{"version":1,"defects":{"PropertyTest::testGetAllUser":3},"times":{"ExampleTest::testDummy":0.005,"PropertyTest::testCreateProperty":0.491,"UserTest::testUserCreate":0.194,"PropertyTest::testGetAllUser":0.081}}

@@ -21,9 +21,10 @@
 
     <section class="services" id="services">
 
-        <h1 class="heading"> our <span>services</span> </h1>
+        <h1 class="heading"> our <span>services</span></h1>
 
         <div class="box-container">
+
 
             <div class="box">
                 <img src="<?php
@@ -34,12 +35,15 @@
                 <a href="#" class="main-btn">learn more</a>
             </div>
 
+
             <div class="box">
                 <img src="<?php
 
                 echo SITE_URL ?>views/components/body/images/s-2.png" alt="">
                 <h3>renting home</h3>
-                <p>Many people mull over the idea of renting out their homes. They may want the benefit of extra income to save money or pay down debt, or they may see it as an option to selling during a housing slump, a way to wait things out until the economy improves.</p>
+                <p>Many people mull over the idea of renting out their homes. They may want the benefit of extra income
+                    to save money or pay down debt, or they may see it as an option to selling during a housing slump, a
+                    way to wait things out until the economy improves.</p>
                 <a href="#" class="main-btn">learn more</a>
             </div>
 
@@ -48,7 +52,8 @@
 
                 echo SITE_URL ?>views/components/body/images/s-3.png" alt="">
                 <h3>selling home</h3>
-                <p>Selling a home normally takes 2 to 3 months. The process can take longer if you’re part of a chain of buyers and sellers. Be with us to cut that time.</p>
+                <p>Selling a home normally takes 2 to 3 months. The process can take longer if you’re part of a chain of
+                    buyers and sellers. Be with us to cut that time.</p>
                 <a href="#" class="main-btn">learn more</a>
             </div>
 
@@ -63,15 +68,20 @@
 
     <section class="featured" id="featured">
 
-        <h1 class="heading"> <span>featured</span> properties </h1>
+        <h1 class="heading"><span>featured</span> properties </h1>
 
         <div class="box-container">
 
-            <div class="box">
-                <div class="image-container">
-                    <img src="<?php
+            <?php
+            require_once(getenv("ROOT") . "database/PropertyHelper.php");
+            $properties = PropertyHelper::getAllProperty();
 
-                    echo SITE_URL ?>views/components/body/images/img-1.jpg" alt="">
+            if ($properties) {
+                foreach ($properties as $property) {
+                    echo <<< EOT
+           <div class="box">
+                <div class="image-container">
+                    <img src="{$property['image']}" alt="">
                     <div class="info">
                         <h3>3 days ago</h3>
                         <h3>for rent</h3>
@@ -83,23 +93,28 @@
                 </div>
                 <div class="content">
                     <div class="price">
-                        <h3>$25,000/mo</h3>
+                        <h3>৳{$property["price"]}/mo</h3>
                     </div>
                     <div class="location">
-                        <h3>apartment</h3>
-                        <p>165/3, Matikata, Cantonment</p>
+                        <h3>{$property["title"]}</h3>
+                        <p>{$property["address"]}</p>
                     </div>
                     <div class="details">
-                        <h3> <i class="fas fa-expand"></i> 3500 sqft </h3>
-                        <h3> <i class="fas fa-bed"></i> 3 beds </h3>
-                        <h3> <i class="fas fa-bath"></i> 2 baths </h3>
+                        <h3><i class="fas fa-expand"></i> {$property["area"]} sqft </h3>
+                        <h3><i class="fas fa-bed"></i> {$property["beds"]} </h3>
+                        <h3><i class="fas fa-bath"></i> {$property["baths"]} baths </h3>
                     </div>
                     <div class="buttons">
                         <a href="#" class="btn">request info</a>
                         <a href="#" class="btn">view details</a>
                     </div>
                 </div>
-            </div>
+            </div>         
+EOT;
+                }
+            }
+            ?>
+
 
             <div class="box">
                 <div class="image-container">
@@ -124,9 +139,9 @@
                         <p>165/3, Matikata, Cantonment</p>
                     </div>
                     <div class="details">
-                        <h3> <i class="fas fa-expand"></i> 3500 sqft </h3>
-                        <h3> <i class="fas fa-bed"></i> 3 beds </h3>
-                        <h3> <i class="fas fa-bath"></i> 2 baths </h3>
+                        <h3><i class="fas fa-expand"></i> 3500 sqft </h3>
+                        <h3><i class="fas fa-bed"></i> 3 beds </h3>
+                        <h3><i class="fas fa-bath"></i> 2 baths </h3>
                     </div>
                     <div class="buttons">
                         <a href="#" class="btn">request info</a>
@@ -159,9 +174,9 @@
                         <p>165/3, Matikata, Cantonment</p>
                     </div>
                     <div class="details">
-                        <h3> <i class="fas fa-expand"></i> 3500 sqft </h3>
-                        <h3> <i class="fas fa-bed"></i> 3 beds </h3>
-                        <h3> <i class="fas fa-bath"></i> 2 baths </h3>
+                        <h3><i class="fas fa-expand"></i> 3500 sqft </h3>
+                        <h3><i class="fas fa-bed"></i> 3 beds </h3>
+                        <h3><i class="fas fa-bath"></i> 2 baths </h3>
                     </div>
                     <div class="buttons">
                         <a href="#" class="btn">request info</a>
@@ -194,9 +209,9 @@
                         <p>165/3, Matikata, Cantonment</p>
                     </div>
                     <div class="details">
-                        <h3> <i class="fas fa-expand"></i> 3500 sqft </h3>
-                        <h3> <i class="fas fa-bed"></i> 3 beds </h3>
-                        <h3> <i class="fas fa-bath"></i> 2 baths </h3>
+                        <h3><i class="fas fa-expand"></i> 3500 sqft </h3>
+                        <h3><i class="fas fa-bed"></i> 3 beds </h3>
+                        <h3><i class="fas fa-bath"></i> 2 baths </h3>
                     </div>
                     <div class="buttons">
                         <a href="#" class="btn">request info</a>
@@ -229,9 +244,9 @@
                         <p>165/3, Matikata, Cantonment</p>
                     </div>
                     <div class="details">
-                        <h3> <i class="fas fa-expand"></i> 3500 sqft </h3>
-                        <h3> <i class="fas fa-bed"></i> 3 beds </h3>
-                        <h3> <i class="fas fa-bath"></i> 2 baths </h3>
+                        <h3><i class="fas fa-expand"></i> 3500 sqft </h3>
+                        <h3><i class="fas fa-bed"></i> 3 beds </h3>
+                        <h3><i class="fas fa-bath"></i> 2 baths </h3>
                     </div>
                     <div class="buttons">
                         <a href="#" class="btn">request info</a>
@@ -247,7 +262,6 @@
 
 </div>
 <!-- featured end point -->
-
 
 
 </body>

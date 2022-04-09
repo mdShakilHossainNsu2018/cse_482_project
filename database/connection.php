@@ -27,8 +27,6 @@ class Database {
         }
         return self::$db->db_connection;
     }
-
-
 }
 ?>
 

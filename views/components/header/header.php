@@ -18,7 +18,7 @@ require_once getenv("ROOT")."database/UserHelper.php";
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="">Home</a>
                 </li>
                 <?php
                 echo '<li class="nav-item"><a class="nav-link" href="'. SITE_URL .'views/add_property/add_property.php">Add Property</a></li>'

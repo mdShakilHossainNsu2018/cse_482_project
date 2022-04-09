@@ -1,5 +1,5 @@
 <?php
-require("create_connection.php");
+require("connection.php");
 
 class CreateTables{
 
@@ -13,8 +13,6 @@ class CreateTables{
             echo "User table Creation Error\n";
             print $e->getMessage();
         }
-
-
     }
 }
 

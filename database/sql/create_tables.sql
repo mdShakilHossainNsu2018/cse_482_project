@@ -15,7 +15,7 @@ DROP SCHEMA IF EXISTS `db` ;
 -- -----------------------------------------------------
 -- Schema db
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `db` ;
+CREATE SCHEMA IF NOT EXISTS `db` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
 USE `db` ;
 
 -- -----------------------------------------------------
@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS `db`.`users` (
   PRIMARY KEY (`user_id`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
 ENGINE = InnoDB
+AUTO_INCREMENT = 35
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -45,11 +46,12 @@ CREATE TABLE IF NOT EXISTS `db`.`properties` (
   `title` VARCHAR(45) NOT NULL,
   `address` VARCHAR(256) NOT NULL,
   `price` INT(100) UNSIGNED ZEROFILL NOT NULL,
-  `area` INT(100) NOT NULL,
-  `beds` INT(100) NOT NULL,
-  `baths` INT(100) NOT NULL,
+  `area` INT NOT NULL,
+  `beds` INT NOT NULL,
+  `baths` INT NOT NULL,
   `details` VARCHAR(256) NOT NULL,
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `image` TEXT NULL,
   `users_user_id` INT NOT NULL,
   PRIMARY KEY (`property_id`),
   INDEX `fk_properties_users1_idx` (`users_user_id` ASC) VISIBLE,
@@ -59,6 +61,7 @@ CREATE TABLE IF NOT EXISTS `db`.`properties` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
+AUTO_INCREMENT = 42
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -81,6 +84,7 @@ CREATE TABLE IF NOT EXISTS `db`.`coords` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
+AUTO_INCREMENT = 41
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -93,7 +97,7 @@ DROP TABLE IF EXISTS `db`.`images` ;
 CREATE TABLE IF NOT EXISTS `db`.`images` (
   `image_id` INT NOT NULL AUTO_INCREMENT,
   `url` VARCHAR(255) NOT NULL,
-  `alt` VARCHAR(255) NULL,
+  `alt` VARCHAR(255) NULL DEFAULT NULL,
   `properties_property_id` INT NOT NULL,
   PRIMARY KEY (`image_id`),
   INDEX `fk_images_properties1_idx` (`properties_property_id` ASC) VISIBLE,
@@ -114,10 +118,10 @@ DROP TABLE IF EXISTS `db`.`user_profile` ;
 
 CREATE TABLE IF NOT EXISTS `db`.`user_profile` (
   `profile_id` INT NOT NULL AUTO_INCREMENT,
-  `phone` VARCHAR(45) NULL,
-  `address` VARCHAR(256) NULL,
-  `name` VARCHAR(45) NULL,
-  `image` VARCHAR(256) NULL,
+  `phone` VARCHAR(45) NULL DEFAULT NULL,
+  `address` VARCHAR(256) NULL DEFAULT NULL,
+  `name` VARCHAR(45) NULL DEFAULT NULL,
+  `image` VARCHAR(256) NULL DEFAULT NULL,
   `users_user_id` INT NOT NULL,
   PRIMARY KEY (`profile_id`),
   UNIQUE INDEX `idprofile_UNIQUE` (`profile_id` ASC) VISIBLE,
@@ -129,6 +133,7 @@ CREATE TABLE IF NOT EXISTS `db`.`user_profile` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
+AUTO_INCREMENT = 35
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
