@@ -8,7 +8,7 @@ require_once getenv("ROOT")."/database/PropertyHelper.php";
 
 class PropertyTest extends TestCase
 {
-//$title, $description, $area, $price, $beds, $baths, $address, $lat, $long, $user_id
+//$title, image, $description, $area, $price, $beds, $baths, $address, $lat, $long, $user_id
     public function testCreateProperty(){
         $faker = Faker\Factory::create();
 

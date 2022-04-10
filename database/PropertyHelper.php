@@ -76,6 +76,26 @@ class PropertyHelper
         }
     }
 
+    public static function getAllCoords(){
+        try {
+            $db_conn = Database::getConnection();
+        } catch (PDOException $exception) {
+            echo "<h1>Error while connecting to database</h1>";
+            echo $exception->getMessage();
+            return false;
+        }
+
+        try {
+            $sql = "SELECT * FROM coords";
+            $stmt = $db_conn->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        }catch (PDOException $exception){
+            echo $exception->getMessage();
+        }
+        return null;
+    }
+
     public static function getAllProperty()
     {
         try {
