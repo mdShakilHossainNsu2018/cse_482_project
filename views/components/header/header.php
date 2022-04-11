@@ -48,7 +48,7 @@ require_once getenv("ROOT")."database/UserHelper.php";
 
                 echo '<li class="nav-item"><a class="nav-link" href="#">Profile</a></li>';
             } else{
-                echo '<li class="nav-item"><a class="nav-link" href="'.SITE_URL.'views/auth/auth.php">Login</a></li>';
+                echo '<li class="nav-item" id="signInBtn"><a class="nav-link" href="'.SITE_URL.'views/auth/auth.php">Login</a></li>';
             }
 
             ?>
