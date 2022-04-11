@@ -1,6 +1,7 @@
 <?php
-require("../../database/PropertyHelper.php");
+require_once("../../database/PropertyHelper.php");
 require_once(getenv("ROOT") . "global_constants.php");
+require_once(getenv("ROOT") . "Session.php");
 
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -14,6 +15,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $area = $_POST["area"];
     $lat = $_POST["lat"];
     $long = $_POST["long"];
+    $user_id = $_POST["user_id"];
 
     $target_dir = getenv("ROOT")."media/";
     $filename   = uniqid() . "-" . round(microtime(true));
@@ -67,6 +69,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $image_url = SITE_URL . 'media/'. $basename;
 
 
+
     // //$title, image, $description, $area, $price, $beds, $baths, $address, $lat, $long, $user_id
     if(PropertyHelper::createProperty(
         $title,
@@ -79,7 +82,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $address,
         $lat,
         $long,
-        37
+        $user_id
     )){
         echo "<script>window.location.href = `" . SITE_URL . "index.php`</script>";
     }

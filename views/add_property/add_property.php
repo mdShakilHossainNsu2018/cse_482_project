@@ -3,6 +3,7 @@ session_start();
 // require_once("global_constants.php");
 // require("database/UserHelper.php");
 include "../../views/components/header/header.php";
+require_once(getenv("ROOT") . "Session.php");
 ?>
 
 <div class="d-flex p-2">
@@ -14,6 +15,12 @@ include "../../views/components/header/header.php";
                 <input type="text" class="form-control" name="title" aria-label="Sizing example input"
                        aria-describedby="inputGroup-sizing-default">
             </div>
+
+            <?php
+            $user_id = Session::getLoggedInUserId();
+            echo "<input type='text' value='$user_id' hidden name='user_id'>";
+
+            ?>
 
 
             <div class="input-group mb-3">
@@ -57,8 +64,8 @@ include "../../views/components/header/header.php";
             <input type="file" name="fileToUpload" id="fileToUpload">
 
             <?php
-//            include_once getenv("ROOT")."views/components/map/google_map_api.php";
-            require_once(getenv("ROOT")."views/components/map/GetCoords.php");
+            //            include_once getenv("ROOT")."views/components/map/google_map_api.php";
+            require_once(getenv("ROOT") . "views/components/map/GetCoords.php");
             GetCoords::get();
             ?>
 

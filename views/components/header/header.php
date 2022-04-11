@@ -20,9 +20,7 @@ require_once getenv("ROOT")."database/UserHelper.php";
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="">Home</a>
                 </li>
-                <?php
-                echo '<li class="nav-item"><a class="nav-link" href="'. SITE_URL .'views/add_property/add_property.php">Add Property</a></li>'
-                ?>
+
                 <!-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Dropdown
@@ -41,6 +39,9 @@ require_once getenv("ROOT")."database/UserHelper.php";
                           <?php
 
             if (Session::isAuthenticated()){
+
+                echo '<li class="nav-item"><a class="nav-link" href="' . SITE_URL . 'views/add_property/add_property.php">Add Property</a></li>';
+
 
                 echo '<li class="nav-item"><a class="nav-link" href="'. SITE_URL .'views/auth/logout.php">Logout</a></li>';
                 //  echo '<li style="color: #DDDDDD;">'.Session::getLoggedInUsername().'</li>';
