@@ -1,7 +1,10 @@
 ```shell
 
 # for clone from github
+https://shell.cloud.google.com/
 git clone https://github.com/mdShakilHossainNsu2018/cse_482_project.git
+
+export LD_LIBRARY_PATH=/usr/local/lib
 
 # for git status
 git status

@@ -25,13 +25,13 @@ DROP TABLE IF EXISTS `db`.`users` ;
 
 CREATE TABLE IF NOT EXISTS `db`.`users` (
   `user_id` INT NOT NULL AUTO_INCREMENT,
-  `email` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(256) NOT NULL,
+  `email` VARCHAR(256) NOT NULL,
+  `password` TEXT NOT NULL,
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`user_id`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
 ENGINE = InnoDB
-AUTO_INCREMENT = 35
+AUTO_INCREMENT = 39
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -44,24 +44,22 @@ DROP TABLE IF EXISTS `db`.`properties` ;
 CREATE TABLE IF NOT EXISTS `db`.`properties` (
   `property_id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(45) NOT NULL,
-  `address` VARCHAR(256) NOT NULL,
+  `address` TEXT NOT NULL,
   `price` INT(100) UNSIGNED ZEROFILL NOT NULL,
   `area` INT NOT NULL,
   `beds` INT NOT NULL,
   `baths` INT NOT NULL,
-  `details` VARCHAR(256) NOT NULL,
+  `details` TEXT NOT NULL,
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `image` TEXT NULL,
+  `image` TEXT NULL DEFAULT NULL,
   `users_user_id` INT NOT NULL,
   PRIMARY KEY (`property_id`),
   INDEX `fk_properties_users1_idx` (`users_user_id` ASC) VISIBLE,
   CONSTRAINT `fk_properties_users1`
     FOREIGN KEY (`users_user_id`)
-    REFERENCES `db`.`users` (`user_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `db`.`users` (`user_id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 42
+AUTO_INCREMENT = 58
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -80,11 +78,9 @@ CREATE TABLE IF NOT EXISTS `db`.`coords` (
   INDEX `fk_coords_properties1_idx` (`properties_property_id` ASC) VISIBLE,
   CONSTRAINT `fk_coords_properties1`
     FOREIGN KEY (`properties_property_id`)
-    REFERENCES `db`.`properties` (`property_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `db`.`properties` (`property_id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 41
+AUTO_INCREMENT = 57
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -103,9 +99,7 @@ CREATE TABLE IF NOT EXISTS `db`.`images` (
   INDEX `fk_images_properties1_idx` (`properties_property_id` ASC) VISIBLE,
   CONSTRAINT `fk_images_properties1`
     FOREIGN KEY (`properties_property_id`)
-    REFERENCES `db`.`properties` (`property_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `db`.`properties` (`property_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -119,9 +113,9 @@ DROP TABLE IF EXISTS `db`.`user_profile` ;
 CREATE TABLE IF NOT EXISTS `db`.`user_profile` (
   `profile_id` INT NOT NULL AUTO_INCREMENT,
   `phone` VARCHAR(45) NULL DEFAULT NULL,
-  `address` VARCHAR(256) NULL DEFAULT NULL,
-  `name` VARCHAR(45) NULL DEFAULT NULL,
-  `image` VARCHAR(256) NULL DEFAULT NULL,
+  `address` TEXT NULL DEFAULT NULL,
+  `name` VARCHAR(256) NULL DEFAULT NULL,
+  `image` TEXT NULL DEFAULT NULL,
   `users_user_id` INT NOT NULL,
   PRIMARY KEY (`profile_id`),
   UNIQUE INDEX `idprofile_UNIQUE` (`profile_id` ASC) VISIBLE,
@@ -129,11 +123,9 @@ CREATE TABLE IF NOT EXISTS `db`.`user_profile` (
   INDEX `fk_user_profile_users1_idx` (`users_user_id` ASC) VISIBLE,
   CONSTRAINT `fk_user_profile_users1`
     FOREIGN KEY (`users_user_id`)
-    REFERENCES `db`.`users` (`user_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `db`.`users` (`user_id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 35
+AUTO_INCREMENT = 39
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
