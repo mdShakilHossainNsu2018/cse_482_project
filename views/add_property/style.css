@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+#property {
+    font-family: 'Poppins', sans-serif;
+    font-size: 62.5%;
+    --green: #27ae60;
+    --black: #333;
+    --white: #fff;
+    --bg-color: #eee;
+    --box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+    --border: .1rem solid var(--black);
+}
+
+label {
+    color: #333;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.7rem;
+    display: block;
+    width: 150px;
+    float: left;
+}
+
+.submit_btn {
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    border-radius: .5rem;
+    margin-top: 1rem;
+    font-size: 1.7rem;
+    padding: 1rem 3rem;
+    background: var(--green);
+    color: var(--white);
+    text-align: center;
+}
+
+.submit_btn:hover {
+    background: var(--black);
+}
+
+.property_container {
+    max-width: 1200px;
+    padding: 2rem;
+    margin: 0 auto;
+
+}
+
+.property-form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+
+}
+
+.property-form-container form {
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: .5rem;
+    background: var(--bg-color);
+}
+
+.property-form-container form h3 {
+    text-transform: uppercase;
+    color: var(--black);
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.property-form-container form .box {
+    width: 100%;
+    border-radius: .5rem;
+    padding: 1.2rem 1.5rem;
+    font-size: 1.7rem;
+    margin: 1rem 0;
+    background: var(--white);
+    text-transform: none;
+}
+
+
+@media (max-width: 991px) {
+
+    #property {
+        font-size: 55%;
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    #property {
+        font-size: 50%;
+    }
+
+}

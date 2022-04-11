@@ -11,9 +11,9 @@ class GetCoords
 <div id="map" style="width:100%;height:400px;"></div>
 
 <label for="lat">Latitude: </label>
-<input  name="lat" id="lat" value="0.0">
+<input class="box" name="lat" id="lat" value="0.0">
 <label for="long">Longitude: </label>
-<input  name="long" id="long" value="0.0">
+<input class="box" name="long" id="long" value="0.0">
 
 <script>
 

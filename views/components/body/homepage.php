@@ -74,10 +74,12 @@
 
             <?php
             require_once(getenv("ROOT") . "database/PropertyHelper.php");
+            require_once(getenv("ROOT") . "/global_constants.php");
             $properties = PropertyHelper::getAllProperty();
 
             if ($properties) {
                 foreach ($properties as $property) {
+                    $url = SITE_URL . "views/property_details/details.php?property_id=". $property["property_id"];
                     echo <<< EOT
            <div class="box">
                 <div class="image-container">
@@ -105,8 +107,8 @@
                         <h3><i class="fas fa-bath"></i> {$property["baths"]} baths </h3>
                     </div>
                     <div class="buttons">
-                        <a href="#" class="btn">request info</a>
-                        <a href="#" class="btn">view details</a>
+<!--                        <a href="#" class="btn">request info</a>-->
+                        <a href="{$url}" class="btn">view details</a>
                     </div>
                 </div>
             </div>         

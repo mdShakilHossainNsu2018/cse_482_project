@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Add Property</title>
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<div id = 'property'>
+<div class="property_container">
+
+   <div class="property-form-container">
+
+      <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
+         <h3>Add a new property</h3>
+         <input type="text" placeholder="Enter property title" name="title" class="box">
+         <input type="text" placeholder="Enter address" name="address" class="box">
+         <input type="number" placeholder="Enter price" name="price" class="box">
+         <input type="number" placeholder="Enter Area in sqft" name="area" class="box">
+         <input type="number" placeholder="Enter Total no of beds" name="beds" class="box">
+         <input type="number" placeholder="Enter no of Baths" name="baths" class="box">
+         <input type="file" id="files" name="files" multiple  class="box">
+         <input type="submit" class="submit_btn" name="add_product" value="add product">
+
+         
+      </form>
+
+   </div>
+</div>
+</div>
+   
+</body>
+</html>

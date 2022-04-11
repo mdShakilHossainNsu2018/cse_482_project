@@ -76,7 +76,8 @@ class PropertyHelper
         }
     }
 
-    public static function getAllCoords(){
+    public static function getAllCoords()
+    {
         try {
             $db_conn = Database::getConnection();
         } catch (PDOException $exception) {
@@ -86,11 +87,11 @@ class PropertyHelper
         }
 
         try {
-            $sql = "SELECT * FROM coords";
+            $sql = "SELECT coords_id, lat, `long`, address FROM coords join properties p on coords.properties_property_id = p.property_id;";
             $stmt = $db_conn->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
-        }catch (PDOException $exception){
+        } catch (PDOException $exception) {
             echo $exception->getMessage();
         }
         return null;
@@ -121,6 +122,32 @@ class PropertyHelper
             $stmt = $db_conn->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
+        } catch (PDOException $exception) {
+            echo $exception->getMessage();
+            return false;
+        }
+    }
+
+    public static function getPropertyBy($id)
+    {
+
+        $db_conn = Database::getConnection();
+
+        try {
+            $sql = "SELECT 
+                        property_id,
+                        title,
+                        image,
+                         address,
+                        trim(leading '0' from price) as price,
+                         area,
+                         beds,
+                         baths,
+                         details,
+                         users_user_id FROM properties where property_id=(?)";
+            $stmt = $db_conn->prepare($sql);
+            $stmt->execute(array($id));
+            return $stmt->fetch();
         } catch (PDOException $exception) {
             echo $exception->getMessage();
             return false;

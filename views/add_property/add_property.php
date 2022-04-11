@@ -6,78 +6,56 @@ include "../../views/components/header/header.php";
 require_once(getenv("ROOT") . "Session.php");
 ?>
 
-<div class="d-flex p-2">
-    <div class="card" style="width: 18rem;">
+<link rel="stylesheet" href='<?php
 
-        <form action="AddPropertyAction.php" method="post" enctype="multipart/form-data">
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Title</span>
-                <input type="text" class="form-control" name="title" aria-label="Sizing example input"
-                       aria-describedby="inputGroup-sizing-default">
-            </div>
-
-            <?php
-            $user_id = Session::getLoggedInUserId();
-            echo "<input type='text' value='$user_id' hidden name='user_id'>";
-
-            ?>
+echo SITE_URL ?>views/add_property/style.css'>
 
 
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Address</span>
-                <input type="text" class="form-control" name="address" aria-label="Sizing example input"
-                       aria-describedby="inputGroup-sizing-default">
-            </div>
+<div id='property'>
+    <div class="property_container">
 
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Price</span>
-                <input type="number" class="form-control" name="price" aria-label="Sizing example input"
-                       aria-describedby="inputGroup-sizing-default">
-            </div>
+        <div class="property-form-container">
 
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Description</span>
-                <input type="text" class="form-control" name="description" aria-label="Sizing example input"
-                       aria-describedby="inputGroup-sizing-default">
-            </div>
+            <form action="AddPropertyAction.php" method="post" enctype="multipart/form-data">
+                <h3>Add a new property</h3>
+                <?php
+                $user_id = Session::getLoggedInUserId();
+                echo "<input type='text' value='$user_id' hidden name='user_id'>";
 
+                ?>
+                <label for="title">Title: </label>
+                <input type="text" placeholder="Enter property title" id="title" name="title" class="box">
 
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Area</span>
-                <input type="number" class="form-control" name="area" aria-label="Sizing example input"
-                       aria-describedby="inputGroup-sizing-default">
-            </div>
+                <label for="title">Description: </label>
+                <textarea type="test"  placeholder="Enter Description" id="description" name="description" class="box"></textarea>
 
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Beds</span>
-                <input type="number" class="form-control" name="beds" aria-label="Sizing example input"
-                       aria-describedby="inputGroup-sizing-default">
-            </div>
+                <label for="address">Address: </label>
+                <input type="text" id="address" placeholder="Enter address" name="address" class="box">
 
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Bath</span>
-                <input type="number" class="form-control" name="baths" aria-label="Sizing example input"
-                       aria-describedby="inputGroup-sizing-default">
-            </div>
+                <label for="price">Price: </label>
+                <input type="number" id="price" placeholder="Enter price" name="price" class="box">
+                <label for="area">Area: </label>
+                <input type="number" id="area" placeholder="Enter Area in sqft" name="area" class="box">
+                <label for="beds">Beds: </label>
+                <input type="number" id="beds" placeholder="Enter Total no of beds" name="beds" class="box">
+                <label for="baths">Baths: </label>
+                <input type="number" id="baths" placeholder="Enter no of Baths" name="baths" class="box">
+                <label for="fileToUpload">Upload Image: </label>
+                <input type="file" name="fileToUpload" id="fileToUpload"  class="box">
 
-            Select image to upload:
-            <input type="file" name="fileToUpload" id="fileToUpload">
+                <?php
+                //            include_once getenv("ROOT")."views/components/map/google_map_api.php";
+                require_once(getenv("ROOT") . "views/components/map/GetCoords.php");
+                GetCoords::get();
+                ?>
 
-            <?php
-            //            include_once getenv("ROOT")."views/components/map/google_map_api.php";
-            require_once(getenv("ROOT") . "views/components/map/GetCoords.php");
-            GetCoords::get();
-            ?>
+                <input type="submit" class="submit_btn" name="add_product" value="add property">
+            </form>
 
-            <button class="btn btn-primary">Submit</button>
-        </form>
-
+        </div>
     </div>
-
-
 </div>
 
-
-
-
-
+<?php
+include_once(getenv("ROOT")."views/components/footer/footer.php");
+?>

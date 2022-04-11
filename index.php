@@ -1,8 +1,8 @@
 <?php
 session_start();
 require_once("global_constants.php");
-require("database/UserHelper.php");
-include "views/components/header/header.php";
+require_once("database/UserHelper.php");
+include_once("views/components/header/header.php");
 
 // home page
 
@@ -17,9 +17,9 @@ $users = UserHelper::getAllUsers();
 //echo Session::getLoggedInUsername();
 
 
-include "views/components/body/homepage.php";
+include_once("views/components/body/homepage.php");
 
 include_once "views/components/map/google_map_api.php";
 
-include "views/components/footer/footer.php";
+include_once("views/components/footer/footer.php");
 ?>
