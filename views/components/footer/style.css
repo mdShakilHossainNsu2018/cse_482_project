@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins: 200, 300, 400, 500, 600, 700, 800, 900&display=swap');
 
-
+*{
+	font-size: 62.5%;
+}
 footer
 {
 	position: relative;
@@ -54,6 +56,7 @@ footer .container h2:before
 footer .container .sec.aboutus p
 {
 	color: #999;
+	font-size: 15px;
 
 }
 
@@ -70,10 +73,10 @@ footer .container .sec.aboutus p
 }
 .sci li a
 {
-	display: flex;
+	display: none;
 	width: 40px;
 	height: 40px;
-	background: #222;
+	background:#222;
 	justify-content: center;
 	align-items: center;
 	margin-right: 10px;
@@ -147,12 +150,14 @@ footer .container .sec.aboutus p
 .contact .info li span
 {
 	color: #999;
+	font-size: 15px;
 }
 
 .contact .info a
 {
 	color: #999;
 	text-decoration: none;
+	
 }
 
 .copyrightText
@@ -162,6 +167,8 @@ footer .container .sec.aboutus p
 	padding: 8px 100px; 
 	text-align: center;
 	color: #999;
+
+	font-size:20px;
 }
 
 @media (max-width:  991px)
