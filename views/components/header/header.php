@@ -8,6 +8,10 @@ require_once getenv("ROOT")."database/UserHelper.php";
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous">
 
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
     <div class="container-fluid">
 
@@ -37,6 +41,7 @@ require_once getenv("ROOT")."database/UserHelper.php";
                 </li> -->
 
                           <?php
+                          echo '<li class="nav-item"><a class="nav-link" href="' . SITE_URL . 'views/chat/chat.php">Message</a></li>';
 
             if (Session::isAuthenticated()){
 

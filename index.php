@@ -19,7 +19,7 @@ $users = UserHelper::getAllUsers();
 
 include_once("views/components/body/homepage.php");
 
-include_once "views/components/map/google_map_api.php";
+include_once("views/components/map/google_map_api.php");
 
 include_once("views/components/footer/footer.php");
 ?>

@@ -130,6 +130,48 @@ DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
 
+-- -----------------------------------------------------
+-- Table `db`.`channels`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `db`.`channels` ;
+
+CREATE TABLE IF NOT EXISTS `db`.`channels` (
+  `channel_id` INT NOT NULL AUTO_INCREMENT,
+  `users_user_id` INT NOT NULL,
+  PRIMARY KEY (`channel_id`),
+  UNIQUE INDEX `channel_id_UNIQUE` (`channel_id` ASC) VISIBLE,
+  INDEX `fk_channels_users1_idx` (`users_user_id` ASC) VISIBLE,
+  CONSTRAINT `fk_channels_users1`
+    FOREIGN KEY (`users_user_id`)
+    REFERENCES `db`.`users` (`user_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `db`.`messages`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `db`.`messages` ;
+
+CREATE TABLE IF NOT EXISTS `db`.`messages` (
+  `create_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` TIMESTAMP NULL,
+  `message_id` INT NOT NULL AUTO_INCREMENT,
+  `message` TEXT NULL,
+  `channels_channel_id` INT NOT NULL,
+  `is_admin` VARCHAR(45) NULL,
+  PRIMARY KEY (`message_id`),
+  UNIQUE INDEX `message_id_UNIQUE` (`message_id` ASC) VISIBLE,
+  INDEX `fk_messages_channels1_idx` (`channels_channel_id` ASC) VISIBLE,
+  CONSTRAINT `fk_messages_channels1`
+    FOREIGN KEY (`channels_channel_id`)
+    REFERENCES `db`.`channels` (`channel_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
