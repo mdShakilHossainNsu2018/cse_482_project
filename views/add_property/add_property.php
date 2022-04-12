@@ -11,7 +11,7 @@ require_once(getenv("ROOT") . "Session.php");
 echo SITE_URL ?>views/add_property/style.css'>
 
 
-<div id='property'>
+<div class='property'>
     <div class="property_container">
 
         <div class="property-form-container">

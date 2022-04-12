@@ -11,14 +11,14 @@ require_once getenv("ROOT")."database/UserHelper.php";
 <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
     <div class="container-fluid">
 
-        <a href="/" class="navbar-brand">Property Buy & Sell</a>
+        <a style="font-size:30px" href="/" class="navbar-brand">Property Buy & Sell </a> 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="">Home</a>
+                    <a class="nav-link active" aria-current="page" style="font-size:20px" href="">Home</a>
                 </li>
 
                 <!-- <li class="nav-item dropdown">
@@ -40,23 +40,23 @@ require_once getenv("ROOT")."database/UserHelper.php";
 
             if (Session::isAuthenticated()){
 
-                echo '<li class="nav-item"><a class="nav-link" href="' . SITE_URL . 'views/add_property/add_property.php">Add Property</a></li>';
+                echo '<li class="nav-item"><a class="nav-link" style="font-size:20px" href="' . SITE_URL . 'views/add_property/add_property.php">Add Property</a></li>';
 
 
-                echo '<li class="nav-item"><a class="nav-link" href="'. SITE_URL .'views/auth/logout.php">Logout</a></li>';
+                echo '<li class="nav-item"><a class="nav-link" style="font-size:20px" href="'. SITE_URL .'views/auth/logout.php">Logout</a></li>';
                 //  echo '<li style="color: #DDDDDD;">'.Session::getLoggedInUsername().'</li>';
 
-                echo '<li class="nav-item"><a class="nav-link" href="#">Profile</a></li>';
+                echo '<li class="nav-item"><a class="nav-link" style="font-size:20px" href="#">Profile</a></li>';
             } else{
-                echo '<li class="nav-item"><a class="nav-link" href="'.SITE_URL.'views/auth/auth.php">Login</a></li>';
+                echo '<li class="nav-item"><a class="nav-link" style="font-size:20px" href="'.SITE_URL.'views/auth/auth.php">Login</a></li>';
             }
 
             ?>
 
             </ul>
             <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <input class="form-control me-2" type="search" placeholder="Search" style="font-size:20px" aria-label="Search">
+                <button class="btn btn-outline-success" style="font-size:20px" type="submit">Search</button>
             </form>
         </div>
     </div>

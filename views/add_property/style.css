@@ -10,7 +10,7 @@
     text-transform: capitalize;
 }
 
-#property {
+.property {
     font-family: 'Poppins', sans-serif;
     font-size: 62.5%;
     --green: #27ae60;
@@ -92,7 +92,7 @@ label {
 
 @media (max-width: 991px) {
 
-    #property {
+    .property {
         font-size: 55%;
     }
 
@@ -101,7 +101,7 @@ label {
 
 @media (max-width: 450px) {
 
-    #property {
+    .property {
         font-size: 50%;
     }
 
