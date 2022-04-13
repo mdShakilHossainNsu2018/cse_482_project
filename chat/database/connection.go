@@ -2,22 +2,24 @@ package database
 
 import (
 	"database/sql"
-	_ "github.com/go-sql-driver/mysql"
+	"github.com/go-sql-driver/mysql"
+
 	"log"
 )
 
 func init() {
-	// Capture connection properties.
-	//cfg := mysql.Config{
-	//	User:   "mysql_user",
-	//	Passwd: "password",
-	//	Net:    "tcp",
-	//	Addr:   "mysql_db:3306",
-	//	DBName: "sm_db",
-	//}
+	//Capture connection properties.
+	cfg := mysql.Config{
+		User:   "user",
+		Passwd: "password",
+		Net:    "tcp",
+		Addr:   "mysql_db:3306",
+		DBName: "sm_db",
+	}
 	// Get a database handle.
 	var err error
-	db, err = sql.Open("mysql", "user:password@/db")
+	//db, err = sql.Open("mysql", "user:password@/db")
+	db, err = sql.Open("mysql", cfg.FormatDSN())
 	if err != nil {
 		log.Fatal(err)
 	}
