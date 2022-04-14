@@ -29,9 +29,9 @@ include "../components/header/header.php"
                 <!--                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>-->
                 <!--            </div>-->
                 <!--            <span>or use your email for registration</span>-->
-                <input type="text" name="name" placeholder="Name" />
-                <input type="email" name="email" placeholder="Email" />
-                <input type="password" name="password" placeholder="Password" />
+                <input type="text" name="name" placeholder="Name" style="font-size:15px" />
+                <input type="email" name="email" placeholder="Email" style="font-size:15px"/>
+                <input type="password" name="password" placeholder="Password" style="font-size:15px" />
                 <button>Sign Up</button>
             </form>
         </div>
@@ -44,8 +44,8 @@ include "../components/header/header.php"
                 <!--                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>-->
                 <!--            </div>-->
                 <!--            <span>or use your account</span>-->
-                <input type="email" placeholder="Email" name="email" />
-                <input type="password" placeholder="Password" name="password" />
+                <input type="email" placeholder="Email" name="email" style="font-size:15px" />
+                <input type="password" placeholder="Password" name="password" style="font-size:15px"/>
                 <a href="#">Forgot your password?</a>
                 <button>Sign In</button>
             </form>
