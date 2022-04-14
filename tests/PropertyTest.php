@@ -3,7 +3,7 @@ use PHPUnit\Framework\TestCase;
 
 require_once 'vendor/autoload.php';
 require_once getenv("ROOT")."/database/PropertyHelper.php";
-//require_once getenv("ROOT")."/database/UserHelper.php";
+require_once getenv("ROOT")."/database/UserHelper.php";
 
 
 class PropertyTest extends TestCase

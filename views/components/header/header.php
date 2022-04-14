@@ -7,7 +7,7 @@ require_once getenv("ROOT")."database/UserHelper.php";
       rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
     <div class="container-fluid">
@@ -56,9 +56,14 @@ require_once getenv("ROOT")."database/UserHelper.php";
 
             </ul>
             <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" style="font-size:20px" aria-label="Search">
+                <input class="form-control me-2" id="search" type="search" placeholder="Search" style="font-size:20px" aria-label="Search">
+
                 <button class="btn btn-outline-success" style="font-size:20px" type="submit">Search</button>
             </form>
+
+                <div class="list-group" style="position: fixed; right: 9rem; top: 5.5rem;">
+                </div>
+
         </div>
     </div>
 </nav>
@@ -98,3 +103,5 @@ require_once getenv("ROOT")."database/UserHelper.php";
 <!--    </nav>-->
 <!--</div>-->
 <!---->
+
+<script src="<?php echo SITE_URL.'views/components/header/ajax.js'?>"></script>
