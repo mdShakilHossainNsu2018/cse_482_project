@@ -1,14 +1,12 @@
 {
   "autoload": {
     "psr-4": {
-      "MyChat\\": "MyChat"
     }
   },
   "require": {
     "php": "^7.1 || ^8.0",
     "ext-pdo": "*",
-    "fakerphp/faker": "^1.19",
-    "cboden/ratchet": "^0.4.4"
+    "fakerphp/faker": "^1.19"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.5"
