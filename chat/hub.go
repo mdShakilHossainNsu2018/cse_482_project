@@ -1,5 +1,12 @@
 package main
 
+import (
+	"encoding/json"
+	"github.com/mdShakilHossainNsu2018/cse_482_project/chat/database"
+	"log"
+	"strconv"
+)
+
 type message struct {
 	data []byte
 	room string
@@ -8,6 +15,11 @@ type message struct {
 type subscription struct {
 	conn *connection
 	room string
+}
+
+type MyMessage struct {
+	Message string
+	Sender  int
 }
 
 // hub maintains the set of active connections and broadcasts messages to the
@@ -56,6 +68,31 @@ func (h *hub) run() {
 			}
 		case m := <-h.broadcast:
 			connections := h.rooms[m.room]
+
+			roomId, err := strconv.Atoi(m.room)
+			if err != nil {
+				return
+			}
+			channel, err2 := database.GetOrCreateChanelId(int32(roomId))
+			if err2 != nil {
+				return
+			}
+			var my_message MyMessage
+			err = json.Unmarshal([]byte(m.data), &my_message)
+			if err != nil {
+				log.Println(err)
+				return
+			}
+			messageLocal := database.Message{
+				Sender:    my_message.Sender,
+				ChannelId: channel.ChannelID,
+				Message:   my_message.Message,
+			}
+			_, err = database.CreateMessage(messageLocal)
+			if err != nil {
+				return
+			}
+
 			for c := range connections {
 				select {
 				case c.send <- m.data:

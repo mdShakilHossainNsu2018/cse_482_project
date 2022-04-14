@@ -11,8 +11,8 @@ $points = PropertyHelper::getAllCoords();
 
 <script type="text/javascript">
     let tempArray = <?php echo JSON_encode($points); ?>;
-    console.log(tempArray);
-    let mapDom = document.getElementById("map")
+    // console.log(tempArray);
+    let mapDom = document.getElementById("map");
 
     function getLocation() {
         if (navigator.geolocation) {
@@ -41,7 +41,6 @@ $points = PropertyHelper::getAllCoords();
 
         const svgMarker2 = {
             path: "M332.195,0C216.595,0,122.889,93.676,122.889,209.287s209.306,455.084,209.306,455.084s209.287-339.494,209.287-455.084C541.482,93.676,447.796,0,332.195,0z M332.195,371.208c-89.299,0-161.94-72.651-161.94-161.94s72.641-161.931,161.94-161.931c89.28,0,161.931,72.651,161.931,161.931C494.126,298.566,421.475,371.208,332.195,371.208zM303.031,285.455l59.383,0.01v20.302h23.966V77.526H278v13.043h96.91v16.668H278v198.52h25.031V285.455L303.031,285.455z M341.555,124.98h32.31v32.31h-32.31V124.98z M341.301,180.699h32.31v32.329h-32.31V180.699zM341.301,235.94h32.31v32.281h-32.31V235.94z M291.024,124.98h32.32v32.31h-32.32V124.98z M290.77,180.699h32.3v32.329h-32.3C290.77,213.029,290.77,180.699,290.77,180.699z M290.77,235.949h32.3v32.281h-32.3C290.77,268.23,290.77,235.949,290.77,235.949z",
-
             fillColor: "red",
             fillOpacity: 0.6,
             strokeWeight: 0,
@@ -55,7 +54,7 @@ $points = PropertyHelper::getAllCoords();
                 lat: parseFloat(obj['lat']),
                 lng: parseFloat(obj['long'])
             };
-            console.log(latLong);
+            // console.log(latLong);
             new google.maps.Marker({
                 position: latLong,
                 map,

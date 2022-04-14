@@ -20,8 +20,8 @@ type Channel struct {
 	UserID    int `json:"user_id"`
 }
 
-func getChanelId(userId int32) (*Channel, error) {
-	rows, err := db.Query("select channel_id from users join channels c on users.user_id = c.users_user_id where user_id = ?;", userId)
+func GetOrCreateChanelId(userId int32) (*Channel, error) {
+	rows, err := db.Query("select channel_id, users_user_id as user_id from users join channels c on users.user_id = c.users_user_id where user_id = ?;", userId)
 	if err != nil {
 		return nil, fmt.Errorf("error while getting channel_id %q: %v", userId, err)
 	}
@@ -32,15 +32,43 @@ func getChanelId(userId int32) (*Channel, error) {
 		}
 	}(rows)
 	var channel Channel
-	for rows.Next() {
 
-		err := rows.Scan(&channel.ChannelID, channel.UserID)
+	if rows.Next() {
+		err := rows.Scan(&channel.ChannelID, &channel.UserID)
 		if err != nil {
 			return nil, err
 		}
+	} else {
+		result, err := db.Exec("INSERT INTO channels (users_user_id) values (?);", userId)
+		if err != nil {
+			return nil, err
+		}
+		lastId, _ := result.LastInsertId()
+		return &Channel{ChannelID: int(lastId), UserID: int(userId)}, nil
 	}
 
 	return &channel, nil
+}
+
+type Message struct {
+	MessageId int
+	Message   string
+	ChannelId int
+	Sender    int
+}
+
+func CreateMessage(message Message) (sql.Result, error) {
+
+	res, err := db.Exec("INSERT INTO messages (message, channels_channel_id,  sender) values (?, ?,  ?)",
+		message.Message, message.ChannelId,
+		message.Sender,
+	)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return res, nil
 }
 
 // AlbumsByArtist queries for albums that have the specified artist name.

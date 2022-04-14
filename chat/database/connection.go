@@ -3,7 +3,6 @@ package database
 import (
 	"database/sql"
 	"github.com/go-sql-driver/mysql"
-
 	"log"
 )
 
@@ -13,8 +12,8 @@ func init() {
 		User:   "user",
 		Passwd: "password",
 		Net:    "tcp",
-		Addr:   "mysql_db:3306",
-		DBName: "sm_db",
+		Addr:   "db:3306",
+		DBName: "db",
 	}
 	// Get a database handle.
 	var err error

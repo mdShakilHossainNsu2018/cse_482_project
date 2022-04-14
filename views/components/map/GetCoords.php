@@ -3,7 +3,8 @@
 class GetCoords
 {
 
-    public static function get(){
+    public static function get()
+    {
 
         echo <<< EOT
 
@@ -54,7 +55,7 @@ function initMap(position) {
       document.getElementById("lat").value = event.latLng.lat();
       document.getElementById("long").value = event.latLng.lng();
       
-      console.log(event.latLng.lat());
+      // console.log(event.latLng.lat());
 marker.setMap(map);
 marker.setAnimation(google.maps.Animation.DROP);
    // placeMarker(event.latLng);

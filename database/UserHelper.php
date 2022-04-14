@@ -20,6 +20,22 @@ class UserHelper
         return null;
     }
 
+    public static function getAllUsersExceptAdmin()
+    {
+        try {
+            $db_conn = Database::getConnection();
+            $stmt = $db_conn->prepare("SELECT  user_id, email, up.name,  created_at, is_admin FROM users join user_profile up on users.user_id = up.users_user_id where is_admin = false");
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            echo "<h1>Error while fetching all user</h1>";
+            echo $e->getMessage();
+        }
+        return null;
+    }
+
+
+
     public static function getLastUserId(){
         try {
             $db_conn = Database::getConnection();

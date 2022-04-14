@@ -138,14 +138,21 @@ CREATE TABLE IF NOT EXISTS `db`.`messages` (
   `message_id` INT NOT NULL AUTO_INCREMENT,
   `message` TEXT NULL DEFAULT NULL,
   `channels_channel_id` INT NOT NULL,
-  `is_admin` VARCHAR(45) NULL DEFAULT NULL,
   `sender` INT NOT NULL,
-  PRIMARY KEY (`message_id`, `sender`),
+  PRIMARY KEY (`message_id`),
   UNIQUE INDEX `message_id_UNIQUE` (`message_id` ASC) VISIBLE,
   INDEX `fk_messages_channels1_idx` (`channels_channel_id` ASC) VISIBLE,
+  INDEX `fk_messages_users1_idx` (`sender` ASC) VISIBLE,
   CONSTRAINT `fk_messages_channels1`
     FOREIGN KEY (`channels_channel_id`)
-    REFERENCES `db`.`channels` (`channel_id`))
+    REFERENCES `db`.`channels` (`channel_id`)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT,
+  CONSTRAINT `fk_messages_users1`
+    FOREIGN KEY (`sender`)
+    REFERENCES `db`.`users` (`user_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;

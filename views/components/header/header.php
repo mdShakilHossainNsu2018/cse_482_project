@@ -7,6 +7,7 @@ require_once getenv("ROOT")."database/UserHelper.php";
       rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 
 <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
     <div class="container-fluid">
@@ -48,7 +49,7 @@ require_once getenv("ROOT")."database/UserHelper.php";
 
                 echo '<li class="nav-item"><a class="nav-link" style="font-size:20px" href="#">Profile</a></li>';
             } else{
-                echo '<li class="nav-item"><a class="nav-link" style="font-size:20px" href="'.SITE_URL.'views/auth/auth.php">Login</a></li>';
+                echo '<li id="signInBtn" class="nav-item"><a class="nav-link" style="font-size:20px" href="'.SITE_URL.'views/auth/auth.php">Login</a></li>';
             }
 
             ?>

@@ -2,11 +2,10 @@ package main
 
 import (
 	"fmt"
+	"github.com/gorilla/websocket"
 	"log"
 	"net/http"
 	"time"
-
-	"github.com/gorilla/websocket"
 )
 
 const (
@@ -62,13 +61,14 @@ func (c *connection) write(mt int, payload []byte) error {
 }
 
 // writePump pumps messages from the hub to the websocket connection.
-func (s *subscription) writePump() {
+func (s *subscription) writePump(roomId string) {
 	c := s.conn
 	ticker := time.NewTicker(pingPeriod)
 	defer func() {
 		ticker.Stop()
 		c.ws.Close()
 	}()
+
 	for {
 		select {
 		case message, ok := <-c.send:
@@ -76,6 +76,7 @@ func (s *subscription) writePump() {
 				c.write(websocket.CloseMessage, []byte{})
 				return
 			}
+
 			if err := c.write(websocket.TextMessage, message); err != nil {
 				return
 			}
@@ -99,6 +100,6 @@ func serveWs(w http.ResponseWriter, r *http.Request, roomId string) {
 	c := &connection{send: make(chan []byte, 256), ws: ws}
 	s := subscription{c, roomId}
 	h.register <- s
-	go s.writePump()
+	go s.writePump(roomId)
 	go s.readPump()
 }
