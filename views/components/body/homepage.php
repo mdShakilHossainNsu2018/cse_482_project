@@ -108,7 +108,7 @@
                     </div>
                     <div class="buttons">
 <!--                        <a href="#" class="btn">request info</a>-->
-                        <a href="{$url}" class="btn">view details</a>
+                        <a href="{$url}" class="main-btn">view details</a>
                     </div>
                 </div>
             </div>         
