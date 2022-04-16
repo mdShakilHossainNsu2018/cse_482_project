@@ -52,31 +52,31 @@ $property = PropertyHelper::getPropertyBy($property_id);
             </div>
             <!-- card right -->
             <div class="product-content">
-                <h2 class="product-title"><?php echo $property["title"]?></h2>
+                <h1 style="font-size:30px !important;" class="product-title"><?php echo $property["title"]?></h1>
 
 
                 <div class="product-price">
-                    <p class="new-price">Price: <span><?php echo $property["price"]?> BDT</span></p>
+                    <p style="font-size:25px !important;" class="new-price">Price: <span><?php echo $property["price"]?> BDT</span></p>
                 </div>
 
 
                 <div class="product-detail">
-                    <h2>about : </h2>
-                    <p><?php echo $property["details"]?></p>
+                    <h2 style="font-size:30px !important;">about : </h2>
+                    <p style="font-size:12px !important;"><?php echo $property["details"]?></p>
 
                     <ul>
-                        <li>Area: <span><?php echo $property["area"]?> SQFT</span></li>
-                        <li>Beds: <span><?php echo $property["beds"]?></span></li>
-                        <li>Baths: <span><?php echo $property["baths"]?></span></li>
+                        <li style="font-size:15px !important;">Area: <span style="font-size:12px !important;"><?php echo $property["area"]?> SQFT</span></li>
+                        <li style="font-size:15px !important;">Beds: <span style="font-size:12px !important;"><?php echo $property["beds"]?></span></li>
+                        <li style="font-size:15px !important;">Baths: <span style="font-size:12px !important;"><?php echo $property["baths"]?></span></li>
 
                     </ul>
                 </div>
 
                 <div class="purchase-info">
-                    <button type="button" class="btn">
+                    <button  type="button" class="btn">
                         Call Now <i class="fas fa-phone-alt"></i>
 
-                        <button type="button" class="btn">
+                        <button  type="button" class="btn">
                             Contact US <i class="fas fa-envelope-open-text"></i>
                         </button>
 
