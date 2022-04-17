@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require_once(getenv("ROOT")."Session.php");
 require("../../database/UserHelper.php");
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){

@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require_once("global_constants.php");
 require_once("database/UserHelper.php");
 include_once("views/components/header/header.php");

@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require_once("../../global_constants.php");
 ?>
 
@@ -14,8 +16,28 @@ require_once("../../global_constants.php");
 <body>
 <?php
 //
-include "../components/header/header.php"
+include "../components/header/header.php";
+$queries = array();
+parse_str($_SERVER['QUERY_STRING'], $queries);
+
+//$user_id = $queries["user_id"] ?? $users[0]["user_id"];
+
+
+if (isset($queries["error"])){
+    $error = $queries["error"];
+    echo "
+<div class='container p-3'>
+    <div class='alert alert-danger' role='alert'>
+    $error
+</div>
+</div>
+
+
+    ";
+}
 //?>
+
+
 
 <div class="auth-body">
 

@@ -1,6 +1,10 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 class Session
 {
+
 
     public static function setSession($key, $value){
         $_SESSION[$key] = $value;

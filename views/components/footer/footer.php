@@ -6,7 +6,7 @@ echo SITE_URL ?>views/components/footer/style.css'>
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 
 <footer>
-    <div class="container">
+    <div class="footer-container">
         <div class="sec aboutus">
             <h2>About Us</h2>
             <p> We cater to the needs of those seeking real estate services, with a promise to make property search,

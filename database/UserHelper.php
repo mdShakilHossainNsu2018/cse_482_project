@@ -68,6 +68,8 @@ class UserHelper
         } catch (PDOException $exception){
             echo "<h1>Error while create user.</h1>";
             echo $exception->getMessage();
+            $signup_err = "User already exits";
+            echo "<script>window.location.href = `" . SITE_URL . "views/auth/auth.php?error=$signup_err`</script>";
             return false;
         }
 
