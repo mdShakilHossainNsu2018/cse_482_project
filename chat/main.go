@@ -54,7 +54,7 @@ const (
 //}
 
 func main() {
-
+	// concurrent
 	go h.run()
 	r := mux.NewRouter()
 	r.HandleFunc("/ws/{roomId}", func(w http.ResponseWriter, r *http.Request) {

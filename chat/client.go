@@ -100,6 +100,7 @@ func serveWs(w http.ResponseWriter, r *http.Request, roomId string) {
 	c := &connection{send: make(chan []byte, 256), ws: ws}
 	s := subscription{c, roomId}
 	h.register <- s
+
 	go s.writePump(roomId)
 	go s.readPump()
 }
