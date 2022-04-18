@@ -97,6 +97,22 @@ class PropertyHelper
         return null;
     }
 
+    public static function getCordByProperty($property_id)
+    {
+
+        $db_conn = Database::getConnection();
+
+        try {
+            $sql = "SELECT coords_id, lat, `long` FROM coords join properties p on coords.properties_property_id = p.property_id where p.property_id = ?;";
+            $stmt = $db_conn->prepare($sql);
+            $stmt->execute(array($property_id));
+            return $stmt->fetch();
+        } catch (PDOException $exception) {
+            echo $exception->getMessage();
+        }
+        return null;
+    }
+
     public static function getAllProperty()
     {
         try {

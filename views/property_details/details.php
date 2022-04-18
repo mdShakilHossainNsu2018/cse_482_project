@@ -61,8 +61,10 @@ $property = PropertyHelper::getPropertyBy($property_id);
 
 
                 <div class="product-detail">
+                    <h2 style="font-size: 30px;">Address:</h2>
+                    <p style="font-size: 18px;"><?php echo $property["address"]?></p>
                     <h2 style="font-size:30px !important;">about : </h2>
-                    <p style="font-size:12px !important;"><?php echo $property["details"]?></p>
+                    <p style="font-size:18px;"><?php echo $property["details"]?></p>
 
                     <ul>
                         <li style="font-size:15px !important;">Area: <span style="font-size:12px !important;"><?php echo $property["area"]?> SQFT</span></li>
@@ -84,6 +86,11 @@ $property = PropertyHelper::getPropertyBy($property_id);
             </div>
         </div>
     </div>
+    <?php
+    require_once(getenv("ROOT")."views/components/map/GetMapView.php");
+    $cords = PropertyHelper::getCordByProperty($property["property_id"]);
+    GetMapView::get($cords['lat'], $cords['long'], $property['address']);
+    ?>
 </div>
 <script src="script.js"></script>
 
