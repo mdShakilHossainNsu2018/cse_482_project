@@ -10,7 +10,7 @@ $(document).ready(function() {
 
         //Validating, if "name" is empty.
         if ( name.length >= 2) {
-            console.log(name.length);
+            // console.log(name.length);
             $('.list-group').css('display', 'block');
             $.ajax({
                 //AJAX type is "Post".
