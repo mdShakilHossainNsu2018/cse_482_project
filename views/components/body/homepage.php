@@ -66,7 +66,7 @@
 
     <!-- featured section -->
 
-    <section class="featured" id="featured">
+    <section class="featured" style="margin-top: 1rem;" id="featured">
 
         <h1 class="heading"><span>featured</span> properties </h1>
 
