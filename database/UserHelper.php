@@ -35,8 +35,8 @@ class UserHelper
     }
 
 
-
-    public static function getLastUserId(){
+    public static function getLastUserId()
+    {
         try {
             $db_conn = Database::getConnection();
             $stmt = $db_conn->prepare("select MAX(user_id) as user_id from users;");
@@ -54,7 +54,7 @@ class UserHelper
     {
         try {
             $db_conn = Database::getConnection();
-        } catch (PDOException $exception){
+        } catch (PDOException $exception) {
             echo "<h1>Error while connecting to database</h1>";
             echo $exception->getMessage();
             return false;
@@ -65,7 +65,7 @@ class UserHelper
             $stmt = $db_conn->prepare($sql);
             $password = password_hash($password, PASSWORD_DEFAULT);
             $stmt->execute(array($email, $password));
-        } catch (PDOException $exception){
+        } catch (PDOException $exception) {
             echo "<h1>Error while create user.</h1>";
             echo $exception->getMessage();
             $signup_err = "User already exits";
@@ -79,18 +79,48 @@ class UserHelper
             $stmt_profile_create = $db_conn->prepare($sql_profile_create);
             return $stmt_profile_create->execute(array($username, $last_user_id));
 
-        } catch (PDOException $exception){
+        } catch (PDOException $exception) {
             echo "<h1>Error while creating profile</h1>";
             echo $exception->getMessage();
             return false;
         }
     }
 
+    public static function getUserById($user_id)
+    {
+        try {
+            $db_conn = Database::getConnection();
+            $stmt = $db_conn->prepare("select profile_id, phone, address, name, image, users_user_id, user_id, email, created_at, is_admin from user_profile join users u on u.user_id = user_profile.users_user_id where user_id = ?;");
+            $stmt->execute(array($user_id));
+            return $stmt->fetch();
+        } catch (PDOException $e) {
+            echo "<h1>Error while fetching all user</h1>";
+            echo $e->getMessage();
+        }
+        return null;
+    }
+
+    public static function updateProfile($profile_id, $phone, $address, $name, $image)
+    {
+        try {
+            $db_conn = Database::getConnection();
+            $stmt = $db_conn->prepare("UPDATE user_profile SET phone = ?,
+                        address = ?, name = ?, image = ? where profile_id = ?");
+            $stmt->execute(array($phone, $address, $name, $image, $profile_id));
+            return true;
+        } catch (PDOException $e) {
+            echo "<h1>Error while fetching all user</h1>";
+            echo $e->getMessage();
+            return false;
+        }
+        return false;
+    }
+
     public static function login($email, $password): bool
     {
         try {
             $db_conn = Database::getConnection();
-        } catch (PDOException $exception){
+        } catch (PDOException $exception) {
             echo "<h1>Error while connecting to database</h1>";
             echo $exception->getMessage();
             return false;
@@ -143,7 +173,7 @@ class UserHelper
             }
             return true;
 
-        } catch (PDOException $exception){
+        } catch (PDOException $exception) {
             echo "Error while login";
             echo $exception->getMessage();
             return false;

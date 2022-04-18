@@ -13,14 +13,14 @@ if (isset($_POST['search'])) {
     $stem = $conn->prepare($Query);
     $stem->execute();
     $results = $stem->fetchAll();
-//Creating unordered list to display result.
+//Creating unordered list to list-group result.
     //Fetching result from database.
     if($results){
         foreach ($results as $result){
             ?>
-
             <a href="<?php echo SITE_URL."views/property_details/details.php?property_id=".$result['property_id']; ?>" class="list-group-item list-group-item-action">
-                <h1><?php echo $result['title']; ?></h1>
+                <h3><?php echo $result['title']; ?></h3>
+                <p><?php echo $result['address']; ?></p>
             </a>
         <?php
     }} }

@@ -51,7 +51,7 @@ require_once getenv("ROOT")."database/UserHelper.php";
                 echo '<li class="nav-item"><a class="nav-link" style="font-size:20px" href="'. SITE_URL .'views/auth/logout.php">Logout</a></li>';
                 //  echo '<li style="color: #DDDDDD;">'.Session::getLoggedInUsername().'</li>';
 
-                echo '<li class="nav-item"><a class="nav-link" style="font-size:20px" href="#">Profile</a></li>';
+                echo '<li class="nav-item"><a class="nav-link" style="font-size:20px" href="'. SITE_URL .'views/profile/profile.php">Profile</a></li>';
             } else{
                 echo '<li id="signInBtn" class="nav-item"><a class="nav-link" style="font-size:20px" href="'.SITE_URL.'views/auth/auth.php">Login</a></li>';
             }

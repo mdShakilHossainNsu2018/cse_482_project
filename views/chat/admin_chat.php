@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include_once(getenv("ROOT") . "views/components/header/header.php");
 require_once(getenv("ROOT") . "database/ChatHelper.php");
 require_once(getenv("ROOT") . "database/UserHelper.php");

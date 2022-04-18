@@ -18,6 +18,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $user_id = $_POST["user_id"];
 
     $target_dir = getenv("ROOT")."media/";
+    echo $target_dir;
     $filename   = uniqid() . "-" . round(microtime(true));
     $extension  = pathinfo( $_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION );
     $basename   = $filename . "." . $extension;
