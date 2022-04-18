@@ -6,6 +6,10 @@ include_once(getenv("ROOT")."views/components/header/header.php");
 require_once(getenv("ROOT")."database/ChatHelper.php");
 require_once(getenv("ROOT")."Session.php");
 
+if (!Session::isAuthenticated()){
+    echo "<script>window.location.href = `" . SITE_URL . "views/auth/auth.php    `</script>";
+}
+
 $user_id = Session::getLoggedInUserId();
 
 

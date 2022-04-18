@@ -12,6 +12,7 @@ public class Cse481SeleniumTest {
         driver.findElement(By.id("signInBtn")).click();
         getSleep(1000);
 
+
 //        JavascriptExecutor js = ((JavascriptExecutor) driver);
 //        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
 
@@ -21,9 +22,28 @@ public class Cse481SeleniumTest {
 //            js.executeScript(String.format("window.scrollTo(0, %s);", i));
 //        }
         getSleep(5000);
+        // invalid signin
+        driver.findElement(By.id("signInBtn")).click();
+        driver.findElement(By.id("signIn-email")).sendKeys("unknownemail@gmail.com");
+        getSleep(1000);
+        driver.findElement(By.id("signIn-password")).sendKeys("unknownpassword");
+        getSleep(1000);
+        driver.findElement(By.id("SignInBtn")).click();
+        getSleep(1000);
+
+
+        driver.findElement(By.id("signIn-email")).sendKeys("shakilnsu2018@gmail.com");
+        getSleep(1000);
+        driver.findElement(By.id("signIn-password")).sendKeys("tom2jery");
+        getSleep(1000);
+        driver.findElement(By.id("SignInBtn")).click();
+        getSleep(1000);
+//        driver.findElement(By.className("")).click();
+
+
 
         System.out.println(driver.getTitle());
-
+        getSleep(5000);
         driver.close(); // close only current windows
     }
 

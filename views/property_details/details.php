@@ -1,6 +1,7 @@
 <?php
 include_once(getenv("ROOT") . "views/components/header/header.php");
 require_once(getenv("ROOT") . "database/PropertyHelper.php");
+require_once(getenv("ROOT").'Session.php');
 $queries = array();
 parse_str($_SERVER['QUERY_STRING'], $queries);
 $property_id = $queries["property_id"];
@@ -85,7 +86,15 @@ $property = PropertyHelper::getPropertyBy($property_id);
                             Call Now <i class="fas fa-phone-alt"></i>
                         </a>
 
-                        <a href="<?php echo SITE_URL . 'views/chat/chat.php' ?>" type="button" class="btn">
+                        <a href="<?php
+                        if(Session::isAuthenticated()){
+                            echo SITE_URL . 'views/chat/chat.php';
+                        }else{
+                            echo SITE_URL . 'views/auth/auth.php';
+                        }
+
+
+                        ?>" type="button" class="btn">
                             Contact US <i class="fas fa-envelope-open-text"></i>
                         </a>
 

@@ -28,7 +28,7 @@ if (isset($queries["error"])){
     echo "
 <div class='container p-3'>
     <div class='alert alert-danger' role='alert'>
-    $error
+    <h1>$error</h1>
 </div>
 </div>
 
@@ -66,10 +66,10 @@ if (isset($queries["error"])){
                 <!--                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>-->
                 <!--            </div>-->
                 <!--            <span>or use your account</span>-->
-                <input type="email" placeholder="Email" name="email" style="font-size:15px" />
-                <input type="password" placeholder="Password" name="password" style="font-size:15px"/>
+                <input type="email" placeholder="Email" id="signIn-email" name="email" style="font-size:15px" />
+                <input type="password" placeholder="Password" id="signIn-password" name="password" style="font-size:15px"/>
                 <a href="#">Forgot your password?</a>
-                <button>Sign In</button>
+                <button id="SignInBtn">Sign In</button>
             </form>
         </div>
         <div class="overlay-container">

@@ -114,40 +114,7 @@ EOT;
             }
             ?>
 
-            <div class="box">
-                <div class="image-container">
-                    <img src="<?php
 
-                    echo SITE_URL ?>views/components/body/images/img-5.jpg" alt="">
-                    <div class="info">
-                        <h3>10 days ago</h3>
-                        <h3>for sell</h3>
-                    </div>
-                    <div class="icons">
-                        <a href="#" class="fas fa-film"><h3>3</h3></a>
-                        <a href="#" class="fas fa-camera"><h3>8</h3></a>
-                    </div>
-                </div>
-                <div class="content">
-                    <div class="price">
-                        <h3>$25,000/mo</h3>
-
-                    </div>
-                    <div class="location">
-                        <h3>apartment</h3>
-                        <p>165/3, Matikata, Cantonment</p>
-                    </div>
-                    <div class="details">
-                        <h3><i class="fas fa-expand"></i> 3500 sqft </h3>
-                        <h3><i class="fas fa-bed"></i> 3 beds </h3>
-                        <h3><i class="fas fa-bath"></i> 2 baths </h3>
-                    </div>
-                    <div class="buttons">
-                        <a href="#" class="btn">request info</a>
-                        <a href="#" class="btn">view details</a>
-                    </div>
-                </div>
-            </div>
 
 
         </div>

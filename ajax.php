@@ -20,7 +20,7 @@ if (isset($_POST['search'])) {
             ?>
             <a href="<?php echo SITE_URL."views/property_details/details.php?property_id=".$result['property_id']; ?>" class="list-group-item list-group-item-action">
                 <h3><?php echo $result['title']; ?></h3>
-                <p><?php echo $result['address']; ?></p>
+                <p style="font-size: 15px"><?php echo $result['address']; ?></p>
             </a>
         <?php
     }} }

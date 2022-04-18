@@ -35,7 +35,7 @@ echo SITE_URL ?>views/add_property/style.css'>
                 <input type="text" id="address" placeholder="Enter address" name="address" class="box">
 
                 <label for="price">Price: </label>
-                <input type="number" id="price" placeholder="Enter price" name="price" class="box">
+                <input type="number" id="price" placeholder="Enter price" name="price" class="box" required>
                 <label for="area">Area: </label>
                 <input type="number" id="area" placeholder="Enter Area in sqft" name="area" class="box">
                 <label for="beds">Beds: </label>
