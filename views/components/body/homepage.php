@@ -85,13 +85,10 @@
                 <div class="image-container">
                     <img src="{$property['image']}" alt="">
                     <div class="info">
-                        <h3>3 days ago</h3>
-                        <h3>for rent</h3>
+                        <h3>{$property["created_at"]}</h3>
+                      
                     </div>
-                    <div class="icons">
-                        <a href="#" class="fas fa-film"><h3>1</h3></a>
-                        <a href="#" class="fas fa-camera"><h3>4</h3></a>
-                    </div>
+                   
                 </div>
                 <div class="content">
                     <div class="price">

@@ -134,7 +134,7 @@ class PropertyHelper
                          beds,
                          baths,
                          details,
-                         users_user_id FROM properties";
+                         users_user_id, created_at FROM properties";
             $stmt = $db_conn->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
@@ -153,14 +153,17 @@ class PropertyHelper
             $sql = "SELECT 
                         property_id,
                         title,
-                        image,
-                         address,
+                        properties.image,
+                         properties.address,
                         trim(leading '0' from price) as price,
                          area,
                          beds,
                          baths,
                          details,
-                         users_user_id FROM properties where property_id=(?)";
+                        up.name as name,
+                        up.phone as phone,
+                        u.email as email,
+                         properties.users_user_id FROM properties join users u on u.user_id = properties.users_user_id join user_profile up on u.user_id = up.users_user_id where property_id=(?)";
             $stmt = $db_conn->prepare($sql);
             $stmt->execute(array($id));
             return $stmt->fetch();
