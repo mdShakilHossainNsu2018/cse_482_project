@@ -2,6 +2,8 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+require_once("database/UserHelper.php");
+
 class Session
 {
 
@@ -23,6 +25,16 @@ class Session
             return $_SESSION["username"];
         }
         return null;
+    }
+
+    public static function isAdmin(): bool
+    {
+       $user =  UserHelper::getUserById(self::getLoggedInUserId());
+       if ($user['is_admin'] == 1){
+           return true;
+       } else{
+           return false;
+       }
     }
 
     public static function getLoggedInUserId(){

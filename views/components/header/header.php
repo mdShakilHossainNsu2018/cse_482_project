@@ -45,11 +45,21 @@ require_once getenv("ROOT")."database/UserHelper.php";
 
             if (Session::isAuthenticated()){
 
+                $is_admin = Session::isAdmin();
+
+
+
                 echo '<li class="nav-item"><a class="nav-link" style="font-size:20px" href="' . SITE_URL . 'views/add_property/add_property.php">Add Property</a></li>';
 
 
                 echo '<li class="nav-item"><a class="nav-link" style="font-size:20px" href="'. SITE_URL .'views/auth/logout.php">Logout</a></li>';
+
                 //  echo '<li style="color: #DDDDDD;">'.Session::getLoggedInUsername().'</li>';
+                if ($is_admin){
+                    echo '<li class="nav-item"><a class="nav-link" style="font-size:20px" href="'. SITE_URL .'views/chat/admin_chat.php">Admin Message</a></li>';
+                } else{
+                    echo '<li class="nav-item"><a class="nav-link" style="font-size:20px" href="'. SITE_URL .'views/chat/chat.php">Message</a></li>';
+                }
 
                 echo '<li class="nav-item"><a class="nav-link" style="font-size:20px" href="'. SITE_URL .'views/profile/profile.php">Profile</a></li>';
             } else{
